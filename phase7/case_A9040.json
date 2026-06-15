@@ -1,0 +1,42 @@
+{
+  "account_id": "A9040",
+  "risk_score": 75.99,
+  "risk_band": "High Risk",
+  "top_features": [
+    {
+      "feature": "F3898",
+      "label": "Continuous feature, 0.0% missing; RF importance rank #6",
+      "value": -1.0,
+      "shap_value": 2.026871
+    },
+    {
+      "feature": "F3914",
+      "label": "Binary feature, 0.0% missing; RF importance rank #118",
+      "value": 0.0,
+      "shap_value": 1.516157
+    },
+    {
+      "feature": "F3750",
+      "label": "Continuous feature, 0.02% missing; RF importance rank #25",
+      "value": 0.157205,
+      "shap_value": 0.827556
+    },
+    {
+      "feature": "F3908",
+      "label": "Binary feature, 0.0% missing; RF importance rank #39",
+      "value": 1.0,
+      "shap_value": 0.774296
+    },
+    {
+      "feature": "F2585",
+      "label": "Continuous feature, 37.48% missing; RF importance rank #611",
+      "value": 14.071429,
+      "shap_value": 0.677535
+    }
+  ],
+  "shap_explanation": "Account A9040 — HIGH RISK (risk score: 75.99)\n\nML Component (weight: 70%): ML score = 96.93. Weighted contribution = 67.85.\n  Top SHAP drivers:\n  F3898 (Continuous feature, 0.0% missing; RF importance rank #6): +2.0269\n  F3914 (Binary feature, 0.0% missing; RF importance rank #118): +1.5162\n  F3750 (Continuous feature, 0.02% missing; RF importance rank #25): +0.8276",
+  "genai_summary": "### 1. Investigation Summary\nThis account has been flagged in the HIGH RISK band with a unified risk score of 75.99. The unified risk assessment was compiled by fusing the supervised predictive model (ML), general ledger statistical deviations, and behavioral outlier indicators. The primary driver of this alert is the supervised machine learning classifier.\n\n### 2. Reasons for Suspicion\n- High Supervised Predictor Signal: The LightGBM classifier assigned a risk score of 96.93/100, indicating that the tabular profile highly resembles historical money mules.\n  - Key SHAP drivers include F3898 (RF importance rank #6) contributing 2.0269 SHAP, and F3914 (RF importance rank #118) contributing 1.5162 SHAP.\n- Statistical Anomaly Status: The general statistical anomaly score is 19.71/100 (compared to the test-set average of 24.12), indicating a below-average level of feature variance deviations.\n- Behavioral Outlier Status: The Local Outlier Factor (LOF) percentile is 30.82/100. Account has elevated behavioral outlier status.\n\n### 3. Recommended Actions\nIn accordance with Bank of India compliance policies, the recommended action for the HIGH RISK band is: Manual fraud investigation. Investigators should perform standard verification check-lists, including: \n- Auditing occupation metadata (verify retail account consistency).\n- Inspecting the ledger for rapid in-and-out cash velocity patterns (pass-through checking).\n- Cross-referencing current observation dates and transaction records against historical profiles.\n\n### 4. Investigation Priority\nBased on the priority queue ranking, this case has been assigned to the flagged queue. Investigators must review cases sequentially starting from the Critical queue to optimize operational resources.",
+  "recommended_action": "Manual fraud investigation",
+  "priority_score": 66.96,
+  "priority_rank": 7
+}

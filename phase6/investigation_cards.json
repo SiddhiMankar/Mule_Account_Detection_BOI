@@ -1,0 +1,2991 @@
+{
+  "flagged_accounts": {
+    "A428": {
+      "account_id": "A428",
+      "target": 0,
+      "risk_score": 31.11,
+      "risk_band": "Monitor",
+      "recommended_action": "Enhanced monitoring",
+      "ml_score": 0.0,
+      "ml_weighted": 0.0,
+      "stat_score": 11.57,
+      "stat_weighted": 1.16,
+      "behavior_score": 99.78,
+      "behavior_weighted": 19.96,
+      "boost_applied": true,
+      "boost_amount": 10.0,
+      "top_shap_contributors": [
+        {
+          "rank": 1,
+          "feature": "F3898",
+          "label": "Continuous feature, 0.0% missing; RF importance rank #6",
+          "shap_value": -0.565272,
+          "direction": "-",
+          "feature_value": 0.0
+        },
+        {
+          "rank": 2,
+          "feature": "F3750",
+          "label": "Continuous feature, 0.02% missing; RF importance rank #25",
+          "shap_value": -0.329454,
+          "direction": "-",
+          "feature_value": -0.510917
+        },
+        {
+          "rank": 3,
+          "feature": "F3914",
+          "label": "Binary feature, 0.0% missing; RF importance rank #118",
+          "shap_value": 0.288165,
+          "direction": "+",
+          "feature_value": 0.0
+        },
+        {
+          "rank": 4,
+          "feature": "F3071",
+          "label": "Continuous feature, 9.05% missing; RF importance rank #114",
+          "shap_value": -0.201954,
+          "direction": "-",
+          "feature_value": -0.683908
+        },
+        {
+          "rank": 5,
+          "feature": "F3751",
+          "label": "Continuous feature, 0.02% missing; RF importance rank #88",
+          "shap_value": -0.185331,
+          "direction": "-",
+          "feature_value": -0.445161
+        }
+      ],
+      "narrative": "Account A428 — MONITOR (risk score: 31.11)\n\nML Component (weight: 70%): ML score = 0.0. Weighted contribution = 0.0.\n  ML model assigned near-zero probability. SHAP contributions are minimal.\n\nStatistical Anomaly (weight: 10%): Score = 11.57. Weighted contribution = 1.16. This is below the test-set average (24.12).\n\nBehavioral Anomaly (weight: 20%): LOF percentile = 99.78. Weighted contribution = 19.96.\n  Behavioral boost of +10.0 applied (LOF percentile >= 99). Account is in the top 1% of behavioral outliers.\n\nAssessment: Alert primarily driven by Behavioral Anomaly."
+    },
+    "A9044": {
+      "account_id": "A9044",
+      "target": 1,
+      "risk_score": 83.49,
+      "risk_band": "Critical",
+      "recommended_action": "Immediate review",
+      "ml_score": 99.96,
+      "ml_weighted": 69.97,
+      "stat_score": 30.77,
+      "stat_weighted": 3.08,
+      "behavior_score": 52.23,
+      "behavior_weighted": 10.45,
+      "boost_applied": false,
+      "boost_amount": 0.0,
+      "top_shap_contributors": [
+        {
+          "rank": 1,
+          "feature": "F3898",
+          "label": "Continuous feature, 0.0% missing; RF importance rank #6",
+          "shap_value": 2.455374,
+          "direction": "+",
+          "feature_value": -0.666667
+        },
+        {
+          "rank": 2,
+          "feature": "F3914",
+          "label": "Binary feature, 0.0% missing; RF importance rank #118",
+          "shap_value": 1.38909,
+          "direction": "+",
+          "feature_value": 0.0
+        },
+        {
+          "rank": 3,
+          "feature": "F3801",
+          "label": "Continuous feature, 0.0% missing; RF importance rank #1",
+          "shap_value": 0.799861,
+          "direction": "+",
+          "feature_value": -0.299088
+        },
+        {
+          "rank": 4,
+          "feature": "F1922",
+          "label": "Continuous feature, 0.14% missing; RF importance rank #5",
+          "shap_value": 0.789338,
+          "direction": "+",
+          "feature_value": -0.192789
+        },
+        {
+          "rank": 5,
+          "feature": "F1863",
+          "label": "Continuous feature, 0.04% missing; RF importance rank #12",
+          "shap_value": 0.773323,
+          "direction": "+",
+          "feature_value": -0.264884
+        }
+      ],
+      "narrative": "Account A9044 — CRITICAL (risk score: 83.49)\n\nML Component (weight: 70%): ML score = 99.96. Weighted contribution = 69.97.\n  Top SHAP drivers:\n  F3898 (Continuous feature, 0.0% missing; RF importance rank #6): +2.4554\n  F3914 (Binary feature, 0.0% missing; RF importance rank #118): +1.3891\n  F3801 (Continuous feature, 0.0% missing; RF importance rank #1): +0.7999\n\nStatistical Anomaly (weight: 10%): Score = 30.77. Weighted contribution = 3.08. This is above the test-set average (24.12).\n\nBehavioral Anomaly (weight: 20%): LOF percentile = 52.23. Weighted contribution = 10.45.\n\nAssessment: Alert primarily driven by ML, Behavioral Anomaly."
+    },
+    "A2617": {
+      "account_id": "A2617",
+      "target": 0,
+      "risk_score": 32.26,
+      "risk_band": "Monitor",
+      "recommended_action": "Enhanced monitoring",
+      "ml_score": 0.0,
+      "ml_weighted": 0.0,
+      "stat_score": 23.35,
+      "stat_weighted": 2.33,
+      "behavior_score": 99.61,
+      "behavior_weighted": 19.92,
+      "boost_applied": true,
+      "boost_amount": 10.0,
+      "top_shap_contributors": [
+        {
+          "rank": 1,
+          "feature": "F3898",
+          "label": "Continuous feature, 0.0% missing; RF importance rank #6",
+          "shap_value": -1.009821,
+          "direction": "-",
+          "feature_value": 0.0
+        },
+        {
+          "rank": 2,
+          "feature": "F3914",
+          "label": "Binary feature, 0.0% missing; RF importance rank #118",
+          "shap_value": 0.43709,
+          "direction": "+",
+          "feature_value": 0.0
+        },
+        {
+          "rank": 3,
+          "feature": "F2585",
+          "label": "Continuous feature, 37.48% missing; RF importance rank #611",
+          "shap_value": 0.368809,
+          "direction": "+",
+          "feature_value": 8.428571
+        },
+        {
+          "rank": 4,
+          "feature": "F3750",
+          "label": "Continuous feature, 0.02% missing; RF importance rank #25",
+          "shap_value": 0.287538,
+          "direction": "+",
+          "feature_value": 0.30131
+        },
+        {
+          "rank": 5,
+          "feature": "F2453",
+          "label": "Continuous feature, 8.36% missing; RF importance rank #45",
+          "shap_value": -0.266216,
+          "direction": "-",
+          "feature_value": 1.13242
+        }
+      ],
+      "narrative": "Account A2617 — MONITOR (risk score: 32.26)\n\nML Component (weight: 70%): ML score = 0.0. Weighted contribution = 0.0.\n  ML model assigned near-zero probability. SHAP contributions are minimal.\n\nStatistical Anomaly (weight: 10%): Score = 23.35. Weighted contribution = 2.33. This is below the test-set average (24.12).\n\nBehavioral Anomaly (weight: 20%): LOF percentile = 99.61. Weighted contribution = 19.92.\n  Behavioral boost of +10.0 applied (LOF percentile >= 99). Account is in the top 1% of behavioral outliers.\n\nAssessment: Alert primarily driven by Behavioral Anomaly."
+    },
+    "A9011": {
+      "account_id": "A9011",
+      "target": 1,
+      "risk_score": 76.29,
+      "risk_band": "High Risk",
+      "recommended_action": "Manual investigation",
+      "ml_score": 97.79,
+      "ml_weighted": 68.45,
+      "stat_score": 5.42,
+      "stat_weighted": 0.54,
+      "behavior_score": 36.49,
+      "behavior_weighted": 7.3,
+      "boost_applied": false,
+      "boost_amount": 0.0,
+      "top_shap_contributors": [
+        {
+          "rank": 1,
+          "feature": "F3898",
+          "label": "Continuous feature, 0.0% missing; RF importance rank #6",
+          "shap_value": 2.089855,
+          "direction": "+",
+          "feature_value": -0.666667
+        },
+        {
+          "rank": 2,
+          "feature": "F3914",
+          "label": "Binary feature, 0.0% missing; RF importance rank #118",
+          "shap_value": 1.682878,
+          "direction": "+",
+          "feature_value": 0.0
+        },
+        {
+          "rank": 3,
+          "feature": "F3908",
+          "label": "Binary feature, 0.0% missing; RF importance rank #39",
+          "shap_value": 0.96112,
+          "direction": "+",
+          "feature_value": 1.0
+        },
+        {
+          "rank": 4,
+          "feature": "F3750",
+          "label": "Continuous feature, 0.02% missing; RF importance rank #25",
+          "shap_value": 0.572944,
+          "direction": "+",
+          "feature_value": 1.270742
+        },
+        {
+          "rank": 5,
+          "feature": "F270",
+          "label": "Continuous feature, 35.99% missing; RF importance rank #40",
+          "shap_value": 0.560445,
+          "direction": "+",
+          "feature_value": 0.875
+        }
+      ],
+      "narrative": "Account A9011 — HIGH RISK (risk score: 76.29)\n\nML Component (weight: 70%): ML score = 97.79. Weighted contribution = 68.45.\n  Top SHAP drivers:\n  F3898 (Continuous feature, 0.0% missing; RF importance rank #6): +2.0899\n  F3914 (Binary feature, 0.0% missing; RF importance rank #118): +1.6829\n  F3908 (Binary feature, 0.0% missing; RF importance rank #39): +0.9611\n\nStatistical Anomaly (weight: 10%): Score = 5.42. Weighted contribution = 0.54. This is below the test-set average (24.12).\n\nBehavioral Anomaly (weight: 20%): LOF percentile = 36.49. Weighted contribution = 7.3.\n\nAssessment: Alert primarily driven by ML."
+    },
+    "A637": {
+      "account_id": "A637",
+      "target": 0,
+      "risk_score": 31.24,
+      "risk_band": "Monitor",
+      "recommended_action": "Enhanced monitoring",
+      "ml_score": 0.0,
+      "ml_weighted": 0.0,
+      "stat_score": 13.57,
+      "stat_weighted": 1.36,
+      "behavior_score": 99.39,
+      "behavior_weighted": 19.88,
+      "boost_applied": true,
+      "boost_amount": 10.0,
+      "top_shap_contributors": [
+        {
+          "rank": 1,
+          "feature": "F3898",
+          "label": "Continuous feature, 0.0% missing; RF importance rank #6",
+          "shap_value": 0.641243,
+          "direction": "+",
+          "feature_value": -0.666667
+        },
+        {
+          "rank": 2,
+          "feature": "F3914",
+          "label": "Binary feature, 0.0% missing; RF importance rank #118",
+          "shap_value": -0.597173,
+          "direction": "-",
+          "feature_value": 1.0
+        },
+        {
+          "rank": 3,
+          "feature": "F3750",
+          "label": "Continuous feature, 0.02% missing; RF importance rank #25",
+          "shap_value": -0.481522,
+          "direction": "-",
+          "feature_value": -0.510917
+        },
+        {
+          "rank": 4,
+          "feature": "F625",
+          "label": "Continuous feature, 0.18% missing; RF importance rank #162",
+          "shap_value": 0.202991,
+          "direction": "+",
+          "feature_value": -0.017295
+        },
+        {
+          "rank": 5,
+          "feature": "F2649",
+          "label": "Continuous feature, 4.44% missing; RF importance rank #404",
+          "shap_value": -0.192035,
+          "direction": "-",
+          "feature_value": 0.375
+        }
+      ],
+      "narrative": "Account A637 — MONITOR (risk score: 31.24)\n\nML Component (weight: 70%): ML score = 0.0. Weighted contribution = 0.0.\n  ML model assigned near-zero probability. SHAP contributions are minimal.\n\nStatistical Anomaly (weight: 10%): Score = 13.57. Weighted contribution = 1.36. This is below the test-set average (24.12).\n\nBehavioral Anomaly (weight: 20%): LOF percentile = 99.39. Weighted contribution = 19.88.\n  Behavioral boost of +10.0 applied (LOF percentile >= 99). Account is in the top 1% of behavioral outliers.\n\nAssessment: Alert primarily driven by Behavioral Anomaly."
+    },
+    "A645": {
+      "account_id": "A645",
+      "target": 0,
+      "risk_score": 33.24,
+      "risk_band": "Monitor",
+      "recommended_action": "Enhanced monitoring",
+      "ml_score": 0.0,
+      "ml_weighted": 0.0,
+      "stat_score": 32.6,
+      "stat_weighted": 3.26,
+      "behavior_score": 99.89,
+      "behavior_weighted": 19.98,
+      "boost_applied": true,
+      "boost_amount": 10.0,
+      "top_shap_contributors": [
+        {
+          "rank": 1,
+          "feature": "F3898",
+          "label": "Continuous feature, 0.0% missing; RF importance rank #6",
+          "shap_value": -0.642444,
+          "direction": "-",
+          "feature_value": 0.0
+        },
+        {
+          "rank": 2,
+          "feature": "F3914",
+          "label": "Binary feature, 0.0% missing; RF importance rank #118",
+          "shap_value": 0.247972,
+          "direction": "+",
+          "feature_value": 0.0
+        },
+        {
+          "rank": 3,
+          "feature": "F996",
+          "label": "Binary feature, 0.18% missing; RF importance rank #56",
+          "shap_value": -0.244155,
+          "direction": "-",
+          "feature_value": 0.0
+        },
+        {
+          "rank": 4,
+          "feature": "F3908",
+          "label": "Binary feature, 0.0% missing; RF importance rank #39",
+          "shap_value": 0.224705,
+          "direction": "+",
+          "feature_value": 1.0
+        },
+        {
+          "rank": 5,
+          "feature": "F625",
+          "label": "Continuous feature, 0.18% missing; RF importance rank #162",
+          "shap_value": -0.209193,
+          "direction": "-",
+          "feature_value": 13.265306
+        }
+      ],
+      "narrative": "Account A645 — MONITOR (risk score: 33.24)\n\nML Component (weight: 70%): ML score = 0.0. Weighted contribution = 0.0.\n  ML model assigned near-zero probability. SHAP contributions are minimal.\n\nStatistical Anomaly (weight: 10%): Score = 32.6. Weighted contribution = 3.26. This is above the test-set average (24.12).\n\nBehavioral Anomaly (weight: 20%): LOF percentile = 99.89. Weighted contribution = 19.98.\n  Behavioral boost of +10.0 applied (LOF percentile >= 99). Account is in the top 1% of behavioral outliers.\n\nAssessment: Alert primarily driven by Behavioral Anomaly."
+    },
+    "A9078": {
+      "account_id": "A9078",
+      "target": 1,
+      "risk_score": 30.66,
+      "risk_band": "Monitor",
+      "recommended_action": "Enhanced monitoring",
+      "ml_score": 0.0,
+      "ml_weighted": 0.0,
+      "stat_score": 8.21,
+      "stat_weighted": 0.82,
+      "behavior_score": 99.17,
+      "behavior_weighted": 19.83,
+      "boost_applied": true,
+      "boost_amount": 10.0,
+      "top_shap_contributors": [
+        {
+          "rank": 1,
+          "feature": "F3898",
+          "label": "Continuous feature, 0.0% missing; RF importance rank #6",
+          "shap_value": 0.881756,
+          "direction": "+",
+          "feature_value": -0.666667
+        },
+        {
+          "rank": 2,
+          "feature": "F3914",
+          "label": "Binary feature, 0.0% missing; RF importance rank #118",
+          "shap_value": 0.521143,
+          "direction": "+",
+          "feature_value": 0.0
+        },
+        {
+          "rank": 3,
+          "feature": "F3908",
+          "label": "Binary feature, 0.0% missing; RF importance rank #39",
+          "shap_value": 0.507118,
+          "direction": "+",
+          "feature_value": 1.0
+        },
+        {
+          "rank": 4,
+          "feature": "F3750",
+          "label": "Continuous feature, 0.02% missing; RF importance rank #25",
+          "shap_value": 0.365715,
+          "direction": "+",
+          "feature_value": 0.489083
+        },
+        {
+          "rank": 5,
+          "feature": "F1106",
+          "label": "Continuous feature, 0.11% missing; RF importance rank #471",
+          "shap_value": -0.301618,
+          "direction": "-",
+          "feature_value": 1.436
+        }
+      ],
+      "narrative": "Account A9078 — MONITOR (risk score: 30.66)\n\nML Component (weight: 70%): ML score = 0.0. Weighted contribution = 0.0.\n  ML model assigned near-zero probability. SHAP contributions are minimal.\n\nStatistical Anomaly (weight: 10%): Score = 8.21. Weighted contribution = 0.82. This is below the test-set average (24.12).\n\nBehavioral Anomaly (weight: 20%): LOF percentile = 99.17. Weighted contribution = 19.83.\n  Behavioral boost of +10.0 applied (LOF percentile >= 99). Account is in the top 1% of behavioral outliers.\n\nAssessment: Alert primarily driven by Behavioral Anomaly."
+    },
+    "A5022": {
+      "account_id": "A5022",
+      "target": 0,
+      "risk_score": 31.96,
+      "risk_band": "Monitor",
+      "recommended_action": "Enhanced monitoring",
+      "ml_score": 0.0,
+      "ml_weighted": 0.0,
+      "stat_score": 20.47,
+      "stat_weighted": 2.05,
+      "behavior_score": 99.56,
+      "behavior_weighted": 19.91,
+      "boost_applied": true,
+      "boost_amount": 10.0,
+      "top_shap_contributors": [
+        {
+          "rank": 1,
+          "feature": "F3914",
+          "label": "Binary feature, 0.0% missing; RF importance rank #118",
+          "shap_value": -0.631905,
+          "direction": "-",
+          "feature_value": 1.0
+        },
+        {
+          "rank": 2,
+          "feature": "F3898",
+          "label": "Continuous feature, 0.0% missing; RF importance rank #6",
+          "shap_value": 0.584815,
+          "direction": "+",
+          "feature_value": -1.0
+        },
+        {
+          "rank": 3,
+          "feature": "F1922",
+          "label": "Continuous feature, 0.14% missing; RF importance rank #5",
+          "shap_value": 0.320712,
+          "direction": "+",
+          "feature_value": -0.193197
+        },
+        {
+          "rank": 4,
+          "feature": "F1863",
+          "label": "Continuous feature, 0.04% missing; RF importance rank #12",
+          "shap_value": 0.234574,
+          "direction": "+",
+          "feature_value": -0.288078
+        },
+        {
+          "rank": 5,
+          "feature": "F3750",
+          "label": "Continuous feature, 0.02% missing; RF importance rank #25",
+          "shap_value": -0.203683,
+          "direction": "-",
+          "feature_value": -0.510917
+        }
+      ],
+      "narrative": "Account A5022 — MONITOR (risk score: 31.96)\n\nML Component (weight: 70%): ML score = 0.0. Weighted contribution = 0.0.\n  ML model assigned near-zero probability. SHAP contributions are minimal.\n\nStatistical Anomaly (weight: 10%): Score = 20.47. Weighted contribution = 2.05. This is below the test-set average (24.12).\n\nBehavioral Anomaly (weight: 20%): LOF percentile = 99.56. Weighted contribution = 19.91.\n  Behavioral boost of +10.0 applied (LOF percentile >= 99). Account is in the top 1% of behavioral outliers.\n\nAssessment: Alert primarily driven by Behavioral Anomaly."
+    },
+    "A1594": {
+      "account_id": "A1594",
+      "target": 0,
+      "risk_score": 32.95,
+      "risk_band": "Monitor",
+      "recommended_action": "Enhanced monitoring",
+      "ml_score": 0.0,
+      "ml_weighted": 0.0,
+      "stat_score": 29.82,
+      "stat_weighted": 2.98,
+      "behavior_score": 99.83,
+      "behavior_weighted": 19.97,
+      "boost_applied": true,
+      "boost_amount": 10.0,
+      "top_shap_contributors": [
+        {
+          "rank": 1,
+          "feature": "F3914",
+          "label": "Binary feature, 0.0% missing; RF importance rank #118",
+          "shap_value": -0.585908,
+          "direction": "-",
+          "feature_value": 1.0
+        },
+        {
+          "rank": 2,
+          "feature": "F3898",
+          "label": "Continuous feature, 0.0% missing; RF importance rank #6",
+          "shap_value": 0.579548,
+          "direction": "+",
+          "feature_value": -0.666667
+        },
+        {
+          "rank": 3,
+          "feature": "F2184",
+          "label": "Continuous feature, 0.04% missing; RF importance rank #9",
+          "shap_value": -0.276676,
+          "direction": "-",
+          "feature_value": -0.640191
+        },
+        {
+          "rank": 4,
+          "feature": "F3484",
+          "label": "Continuous feature, 0.09% missing; RF importance rank #65",
+          "shap_value": 0.240388,
+          "direction": "+",
+          "feature_value": 0.666667
+        },
+        {
+          "rank": 5,
+          "feature": "F3750",
+          "label": "Continuous feature, 0.02% missing; RF importance rank #25",
+          "shap_value": 0.235476,
+          "direction": "+",
+          "feature_value": 0.707424
+        }
+      ],
+      "narrative": "Account A1594 — MONITOR (risk score: 32.95)\n\nML Component (weight: 70%): ML score = 0.0. Weighted contribution = 0.0.\n  ML model assigned near-zero probability. SHAP contributions are minimal.\n\nStatistical Anomaly (weight: 10%): Score = 29.82. Weighted contribution = 2.98. This is above the test-set average (24.12).\n\nBehavioral Anomaly (weight: 20%): LOF percentile = 99.83. Weighted contribution = 19.97.\n  Behavioral boost of +10.0 applied (LOF percentile >= 99). Account is in the top 1% of behavioral outliers.\n\nAssessment: Alert primarily driven by Behavioral Anomaly."
+    },
+    "A5068": {
+      "account_id": "A5068",
+      "target": 0,
+      "risk_score": 31.59,
+      "risk_band": "Monitor",
+      "recommended_action": "Enhanced monitoring",
+      "ml_score": 0.0,
+      "ml_weighted": 0.0,
+      "stat_score": 16.87,
+      "stat_weighted": 1.69,
+      "behavior_score": 99.5,
+      "behavior_weighted": 19.9,
+      "boost_applied": true,
+      "boost_amount": 10.0,
+      "top_shap_contributors": [
+        {
+          "rank": 1,
+          "feature": "F3898",
+          "label": "Continuous feature, 0.0% missing; RF importance rank #6",
+          "shap_value": 0.425326,
+          "direction": "+",
+          "feature_value": -1.0
+        },
+        {
+          "rank": 2,
+          "feature": "F3914",
+          "label": "Binary feature, 0.0% missing; RF importance rank #118",
+          "shap_value": -0.349644,
+          "direction": "-",
+          "feature_value": 1.0
+        },
+        {
+          "rank": 3,
+          "feature": "F1863",
+          "label": "Continuous feature, 0.04% missing; RF importance rank #12",
+          "shap_value": 0.192083,
+          "direction": "+",
+          "feature_value": -0.288078
+        },
+        {
+          "rank": 4,
+          "feature": "F3913",
+          "label": "Binary feature, 0.0% missing; RF importance rank #93",
+          "shap_value": 0.158871,
+          "direction": "+",
+          "feature_value": 0.0
+        },
+        {
+          "rank": 5,
+          "feature": "F1922",
+          "label": "Continuous feature, 0.14% missing; RF importance rank #5",
+          "shap_value": -0.151296,
+          "direction": "-",
+          "feature_value": 1.90787
+        }
+      ],
+      "narrative": "Account A5068 — MONITOR (risk score: 31.59)\n\nML Component (weight: 70%): ML score = 0.0. Weighted contribution = 0.0.\n  ML model assigned near-zero probability. SHAP contributions are minimal.\n\nStatistical Anomaly (weight: 10%): Score = 16.87. Weighted contribution = 1.69. This is below the test-set average (24.12).\n\nBehavioral Anomaly (weight: 20%): LOF percentile = 99.5. Weighted contribution = 19.9.\n  Behavioral boost of +10.0 applied (LOF percentile >= 99). Account is in the top 1% of behavioral outliers.\n\nAssessment: Alert primarily driven by Behavioral Anomaly."
+    },
+    "A9075": {
+      "account_id": "A9075",
+      "target": 1,
+      "risk_score": 81.2,
+      "risk_band": "Critical",
+      "recommended_action": "Immediate review",
+      "ml_score": 100.0,
+      "ml_weighted": 70.0,
+      "stat_score": 27.29,
+      "stat_weighted": 2.73,
+      "behavior_score": 42.38,
+      "behavior_weighted": 8.48,
+      "boost_applied": false,
+      "boost_amount": 0.0,
+      "top_shap_contributors": [
+        {
+          "rank": 1,
+          "feature": "F3898",
+          "label": "Continuous feature, 0.0% missing; RF importance rank #6",
+          "shap_value": 3.06267,
+          "direction": "+",
+          "feature_value": -1.0
+        },
+        {
+          "rank": 2,
+          "feature": "F3914",
+          "label": "Binary feature, 0.0% missing; RF importance rank #118",
+          "shap_value": 1.602554,
+          "direction": "+",
+          "feature_value": 0.0
+        },
+        {
+          "rank": 3,
+          "feature": "F3908",
+          "label": "Binary feature, 0.0% missing; RF importance rank #39",
+          "shap_value": 1.135098,
+          "direction": "+",
+          "feature_value": 1.0
+        },
+        {
+          "rank": 4,
+          "feature": "F3750",
+          "label": "Continuous feature, 0.02% missing; RF importance rank #25",
+          "shap_value": 1.00685,
+          "direction": "+",
+          "feature_value": 0.786026
+        },
+        {
+          "rank": 5,
+          "feature": "F3807",
+          "label": "Continuous feature, 0.0% missing; RF importance rank #2",
+          "shap_value": 0.71776,
+          "direction": "+",
+          "feature_value": -0.229316
+        }
+      ],
+      "narrative": "Account A9075 — CRITICAL (risk score: 81.2)\n\nML Component (weight: 70%): ML score = 100.0. Weighted contribution = 70.0.\n  Top SHAP drivers:\n  F3898 (Continuous feature, 0.0% missing; RF importance rank #6): +3.0627\n  F3914 (Binary feature, 0.0% missing; RF importance rank #118): +1.6026\n  F3908 (Binary feature, 0.0% missing; RF importance rank #39): +1.1351\n\nStatistical Anomaly (weight: 10%): Score = 27.29. Weighted contribution = 2.73. This is above the test-set average (24.12).\n\nBehavioral Anomaly (weight: 20%): LOF percentile = 42.38. Weighted contribution = 8.48.\n\nAssessment: Alert primarily driven by ML."
+    },
+    "A2030": {
+      "account_id": "A2030",
+      "target": 0,
+      "risk_score": 32.31,
+      "risk_band": "Monitor",
+      "recommended_action": "Enhanced monitoring",
+      "ml_score": 0.0,
+      "ml_weighted": 0.0,
+      "stat_score": 24.67,
+      "stat_weighted": 2.47,
+      "behavior_score": 99.23,
+      "behavior_weighted": 19.85,
+      "boost_applied": true,
+      "boost_amount": 10.0,
+      "top_shap_contributors": [
+        {
+          "rank": 1,
+          "feature": "F3898",
+          "label": "Continuous feature, 0.0% missing; RF importance rank #6",
+          "shap_value": -0.794907,
+          "direction": "-",
+          "feature_value": 0.0
+        },
+        {
+          "rank": 2,
+          "feature": "F435",
+          "label": "Continuous feature, 6.99% missing; RF importance rank #168",
+          "shap_value": 0.354319,
+          "direction": "+",
+          "feature_value": 1.21875
+        },
+        {
+          "rank": 3,
+          "feature": "F3914",
+          "label": "Binary feature, 0.0% missing; RF importance rank #118",
+          "shap_value": 0.348211,
+          "direction": "+",
+          "feature_value": 0.0
+        },
+        {
+          "rank": 4,
+          "feature": "F1863",
+          "label": "Continuous feature, 0.04% missing; RF importance rank #12",
+          "shap_value": -0.298992,
+          "direction": "-",
+          "feature_value": 1.480511
+        },
+        {
+          "rank": 5,
+          "feature": "F2388",
+          "label": "Continuous feature, 26.07% missing; RF importance rank #41",
+          "shap_value": 0.251106,
+          "direction": "+",
+          "feature_value": 89.421053
+        }
+      ],
+      "narrative": "Account A2030 — MONITOR (risk score: 32.31)\n\nML Component (weight: 70%): ML score = 0.0. Weighted contribution = 0.0.\n  ML model assigned near-zero probability. SHAP contributions are minimal.\n\nStatistical Anomaly (weight: 10%): Score = 24.67. Weighted contribution = 2.47. This is above the test-set average (24.12).\n\nBehavioral Anomaly (weight: 20%): LOF percentile = 99.23. Weighted contribution = 19.85.\n  Behavioral boost of +10.0 applied (LOF percentile >= 99). Account is in the top 1% of behavioral outliers.\n\nAssessment: Alert primarily driven by Behavioral Anomaly."
+    },
+    "A1846": {
+      "account_id": "A1846",
+      "target": 0,
+      "risk_score": 31.43,
+      "risk_band": "Monitor",
+      "recommended_action": "Enhanced monitoring",
+      "ml_score": 0.0,
+      "ml_weighted": 0.0,
+      "stat_score": 16.26,
+      "stat_weighted": 1.63,
+      "behavior_score": 99.01,
+      "behavior_weighted": 19.8,
+      "boost_applied": true,
+      "boost_amount": 10.0,
+      "top_shap_contributors": [
+        {
+          "rank": 1,
+          "feature": "F3898",
+          "label": "Continuous feature, 0.0% missing; RF importance rank #6",
+          "shap_value": -1.140846,
+          "direction": "-",
+          "feature_value": 0.0
+        },
+        {
+          "rank": 2,
+          "feature": "F3914",
+          "label": "Binary feature, 0.0% missing; RF importance rank #118",
+          "shap_value": 0.376591,
+          "direction": "+",
+          "feature_value": 0.0
+        },
+        {
+          "rank": 3,
+          "feature": "F435",
+          "label": "Continuous feature, 6.99% missing; RF importance rank #168",
+          "shap_value": 0.255094,
+          "direction": "+",
+          "feature_value": 2.5625
+        },
+        {
+          "rank": 4,
+          "feature": "F3908",
+          "label": "Binary feature, 0.0% missing; RF importance rank #39",
+          "shap_value": 0.239947,
+          "direction": "+",
+          "feature_value": 1.0
+        },
+        {
+          "rank": 5,
+          "feature": "F625",
+          "label": "Continuous feature, 0.18% missing; RF importance rank #162",
+          "shap_value": 0.238158,
+          "direction": "+",
+          "feature_value": -0.03459
+        }
+      ],
+      "narrative": "Account A1846 — MONITOR (risk score: 31.43)\n\nML Component (weight: 70%): ML score = 0.0. Weighted contribution = 0.0.\n  ML model assigned near-zero probability. SHAP contributions are minimal.\n\nStatistical Anomaly (weight: 10%): Score = 16.26. Weighted contribution = 1.63. This is below the test-set average (24.12).\n\nBehavioral Anomaly (weight: 20%): LOF percentile = 99.01. Weighted contribution = 19.8.\n  Behavioral boost of +10.0 applied (LOF percentile >= 99). Account is in the top 1% of behavioral outliers.\n\nAssessment: Alert primarily driven by Behavioral Anomaly."
+    },
+    "A9043": {
+      "account_id": "A9043",
+      "target": 1,
+      "risk_score": 44.82,
+      "risk_band": "Monitor",
+      "recommended_action": "Enhanced monitoring",
+      "ml_score": 52.68,
+      "ml_weighted": 36.88,
+      "stat_score": 8.22,
+      "stat_weighted": 0.82,
+      "behavior_score": 35.61,
+      "behavior_weighted": 7.12,
+      "boost_applied": false,
+      "boost_amount": 0.0,
+      "top_shap_contributors": [
+        {
+          "rank": 1,
+          "feature": "F3898",
+          "label": "Continuous feature, 0.0% missing; RF importance rank #6",
+          "shap_value": 1.6627,
+          "direction": "+",
+          "feature_value": -1.0
+        },
+        {
+          "rank": 2,
+          "feature": "F3914",
+          "label": "Binary feature, 0.0% missing; RF importance rank #118",
+          "shap_value": 1.48578,
+          "direction": "+",
+          "feature_value": 0.0
+        },
+        {
+          "rank": 3,
+          "feature": "F3908",
+          "label": "Binary feature, 0.0% missing; RF importance rank #39",
+          "shap_value": 0.720372,
+          "direction": "+",
+          "feature_value": 1.0
+        },
+        {
+          "rank": 4,
+          "feature": "F2356",
+          "label": "Continuous feature, 7.65% missing; RF importance rank #272",
+          "shap_value": -0.576057,
+          "direction": "-",
+          "feature_value": 1.444444
+        },
+        {
+          "rank": 5,
+          "feature": "F3807",
+          "label": "Continuous feature, 0.0% missing; RF importance rank #2",
+          "shap_value": 0.4885,
+          "direction": "+",
+          "feature_value": -0.291716
+        }
+      ],
+      "narrative": "Account A9043 — MONITOR (risk score: 44.82)\n\nML Component (weight: 70%): ML score = 52.68. Weighted contribution = 36.88.\n  Top SHAP drivers:\n  F3898 (Continuous feature, 0.0% missing; RF importance rank #6): +1.6627\n  F3914 (Binary feature, 0.0% missing; RF importance rank #118): +1.4858\n  F3908 (Binary feature, 0.0% missing; RF importance rank #39): +0.7204\n\nStatistical Anomaly (weight: 10%): Score = 8.22. Weighted contribution = 0.82. This is below the test-set average (24.12).\n\nBehavioral Anomaly (weight: 20%): LOF percentile = 35.61. Weighted contribution = 7.12.\n\nAssessment: Alert primarily driven by ML."
+    },
+    "A9040": {
+      "account_id": "A9040",
+      "target": 1,
+      "risk_score": 75.99,
+      "risk_band": "High Risk",
+      "recommended_action": "Manual investigation",
+      "ml_score": 96.93,
+      "ml_weighted": 67.85,
+      "stat_score": 19.71,
+      "stat_weighted": 1.97,
+      "behavior_score": 30.82,
+      "behavior_weighted": 6.16,
+      "boost_applied": false,
+      "boost_amount": 0.0,
+      "top_shap_contributors": [
+        {
+          "rank": 1,
+          "feature": "F3898",
+          "label": "Continuous feature, 0.0% missing; RF importance rank #6",
+          "shap_value": 2.026871,
+          "direction": "+",
+          "feature_value": -1.0
+        },
+        {
+          "rank": 2,
+          "feature": "F3914",
+          "label": "Binary feature, 0.0% missing; RF importance rank #118",
+          "shap_value": 1.516157,
+          "direction": "+",
+          "feature_value": 0.0
+        },
+        {
+          "rank": 3,
+          "feature": "F3750",
+          "label": "Continuous feature, 0.02% missing; RF importance rank #25",
+          "shap_value": 0.827556,
+          "direction": "+",
+          "feature_value": 0.157205
+        },
+        {
+          "rank": 4,
+          "feature": "F3908",
+          "label": "Binary feature, 0.0% missing; RF importance rank #39",
+          "shap_value": 0.774296,
+          "direction": "+",
+          "feature_value": 1.0
+        },
+        {
+          "rank": 5,
+          "feature": "F2585",
+          "label": "Continuous feature, 37.48% missing; RF importance rank #611",
+          "shap_value": 0.677535,
+          "direction": "+",
+          "feature_value": 14.071429
+        }
+      ],
+      "narrative": "Account A9040 — HIGH RISK (risk score: 75.99)\n\nML Component (weight: 70%): ML score = 96.93. Weighted contribution = 67.85.\n  Top SHAP drivers:\n  F3898 (Continuous feature, 0.0% missing; RF importance rank #6): +2.0269\n  F3914 (Binary feature, 0.0% missing; RF importance rank #118): +1.5162\n  F3750 (Continuous feature, 0.02% missing; RF importance rank #25): +0.8276\n\nStatistical Anomaly (weight: 10%): Score = 19.71. Weighted contribution = 1.97. This is below the test-set average (24.12).\n\nBehavioral Anomaly (weight: 20%): LOF percentile = 30.82. Weighted contribution = 6.16.\n\nAssessment: Alert primarily driven by ML."
+    },
+    "A9080": {
+      "account_id": "A9080",
+      "target": 1,
+      "risk_score": 80.41,
+      "risk_band": "Critical",
+      "recommended_action": "Immediate review",
+      "ml_score": 95.72,
+      "ml_weighted": 67.0,
+      "stat_score": 12.07,
+      "stat_weighted": 1.21,
+      "behavior_score": 60.98,
+      "behavior_weighted": 12.2,
+      "boost_applied": false,
+      "boost_amount": 0.0,
+      "top_shap_contributors": [
+        {
+          "rank": 1,
+          "feature": "F3898",
+          "label": "Continuous feature, 0.0% missing; RF importance rank #6",
+          "shap_value": 1.896803,
+          "direction": "+",
+          "feature_value": -0.666667
+        },
+        {
+          "rank": 2,
+          "feature": "F3914",
+          "label": "Binary feature, 0.0% missing; RF importance rank #118",
+          "shap_value": 1.836381,
+          "direction": "+",
+          "feature_value": 0.0
+        },
+        {
+          "rank": 3,
+          "feature": "F3908",
+          "label": "Binary feature, 0.0% missing; RF importance rank #39",
+          "shap_value": 0.768651,
+          "direction": "+",
+          "feature_value": 1.0
+        },
+        {
+          "rank": 4,
+          "feature": "F3750",
+          "label": "Continuous feature, 0.02% missing; RF importance rank #25",
+          "shap_value": 0.600793,
+          "direction": "+",
+          "feature_value": 0.0131
+        },
+        {
+          "rank": 5,
+          "feature": "F435",
+          "label": "Continuous feature, 6.99% missing; RF importance rank #168",
+          "shap_value": 0.535639,
+          "direction": "+",
+          "feature_value": 0.875
+        }
+      ],
+      "narrative": "Account A9080 — CRITICAL (risk score: 80.41)\n\nML Component (weight: 70%): ML score = 95.72. Weighted contribution = 67.0.\n  Top SHAP drivers:\n  F3898 (Continuous feature, 0.0% missing; RF importance rank #6): +1.8968\n  F3914 (Binary feature, 0.0% missing; RF importance rank #118): +1.8364\n  F3908 (Binary feature, 0.0% missing; RF importance rank #39): +0.7687\n\nStatistical Anomaly (weight: 10%): Score = 12.07. Weighted contribution = 1.21. This is below the test-set average (24.12).\n\nBehavioral Anomaly (weight: 20%): LOF percentile = 60.98. Weighted contribution = 12.2.\n\nAssessment: Alert primarily driven by ML, Behavioral Anomaly."
+    },
+    "A9074": {
+      "account_id": "A9074",
+      "target": 1,
+      "risk_score": 75.52,
+      "risk_band": "High Risk",
+      "recommended_action": "Manual investigation",
+      "ml_score": 99.69,
+      "ml_weighted": 69.78,
+      "stat_score": 13.66,
+      "stat_weighted": 1.37,
+      "behavior_score": 21.85,
+      "behavior_weighted": 4.37,
+      "boost_applied": false,
+      "boost_amount": 0.0,
+      "top_shap_contributors": [
+        {
+          "rank": 1,
+          "feature": "F3898",
+          "label": "Continuous feature, 0.0% missing; RF importance rank #6",
+          "shap_value": 2.581639,
+          "direction": "+",
+          "feature_value": -0.666667
+        },
+        {
+          "rank": 2,
+          "feature": "F3914",
+          "label": "Binary feature, 0.0% missing; RF importance rank #118",
+          "shap_value": 1.993894,
+          "direction": "+",
+          "feature_value": 0.0
+        },
+        {
+          "rank": 3,
+          "feature": "F3908",
+          "label": "Binary feature, 0.0% missing; RF importance rank #39",
+          "shap_value": 1.046393,
+          "direction": "+",
+          "feature_value": 1.0
+        },
+        {
+          "rank": 4,
+          "feature": "F3750",
+          "label": "Continuous feature, 0.02% missing; RF importance rank #25",
+          "shap_value": 0.834145,
+          "direction": "+",
+          "feature_value": 0.991266
+        },
+        {
+          "rank": 5,
+          "feature": "F270",
+          "label": "Continuous feature, 35.99% missing; RF importance rank #40",
+          "shap_value": 0.733205,
+          "direction": "+",
+          "feature_value": 3.125
+        }
+      ],
+      "narrative": "Account A9074 — HIGH RISK (risk score: 75.52)\n\nML Component (weight: 70%): ML score = 99.69. Weighted contribution = 69.78.\n  Top SHAP drivers:\n  F3898 (Continuous feature, 0.0% missing; RF importance rank #6): +2.5816\n  F3914 (Binary feature, 0.0% missing; RF importance rank #118): +1.9939\n  F3908 (Binary feature, 0.0% missing; RF importance rank #39): +1.0464\n\nStatistical Anomaly (weight: 10%): Score = 13.66. Weighted contribution = 1.37. This is below the test-set average (24.12).\n\nBehavioral Anomaly (weight: 20%): LOF percentile = 21.85. Weighted contribution = 4.37.\n\nAssessment: Alert primarily driven by ML."
+    },
+    "A4498": {
+      "account_id": "A4498",
+      "target": 0,
+      "risk_score": 33.13,
+      "risk_band": "Monitor",
+      "recommended_action": "Enhanced monitoring",
+      "ml_score": 0.0,
+      "ml_weighted": 0.0,
+      "stat_score": 31.43,
+      "stat_weighted": 3.14,
+      "behavior_score": 99.94,
+      "behavior_weighted": 19.99,
+      "boost_applied": true,
+      "boost_amount": 10.0,
+      "top_shap_contributors": [
+        {
+          "rank": 1,
+          "feature": "F886",
+          "label": "Binary feature, 0.02% missing; RF importance rank #1083",
+          "shap_value": 0.762585,
+          "direction": "+",
+          "feature_value": 1.0
+        },
+        {
+          "rank": 2,
+          "feature": "F3898",
+          "label": "Continuous feature, 0.0% missing; RF importance rank #6",
+          "shap_value": -0.627363,
+          "direction": "-",
+          "feature_value": 0.0
+        },
+        {
+          "rank": 3,
+          "feature": "F3801",
+          "label": "Continuous feature, 0.0% missing; RF importance rank #1",
+          "shap_value": -0.347568,
+          "direction": "-",
+          "feature_value": 1.762464
+        },
+        {
+          "rank": 4,
+          "feature": "F3914",
+          "label": "Binary feature, 0.0% missing; RF importance rank #118",
+          "shap_value": 0.303967,
+          "direction": "+",
+          "feature_value": 0.0
+        },
+        {
+          "rank": 5,
+          "feature": "F3913",
+          "label": "Binary feature, 0.0% missing; RF importance rank #93",
+          "shap_value": 0.263347,
+          "direction": "+",
+          "feature_value": 0.0
+        }
+      ],
+      "narrative": "Account A4498 — MONITOR (risk score: 33.13)\n\nML Component (weight: 70%): ML score = 0.0. Weighted contribution = 0.0.\n  ML model assigned near-zero probability. SHAP contributions are minimal.\n\nStatistical Anomaly (weight: 10%): Score = 31.43. Weighted contribution = 3.14. This is above the test-set average (24.12).\n\nBehavioral Anomaly (weight: 20%): LOF percentile = 99.94. Weighted contribution = 19.99.\n  Behavioral boost of +10.0 applied (LOF percentile >= 99). Account is in the top 1% of behavioral outliers.\n\nAssessment: Alert primarily driven by Behavioral Anomaly."
+    },
+    "A9005": {
+      "account_id": "A9005",
+      "target": 1,
+      "risk_score": 75.95,
+      "risk_band": "High Risk",
+      "recommended_action": "Manual investigation",
+      "ml_score": 98.39,
+      "ml_weighted": 68.87,
+      "stat_score": 10.36,
+      "stat_weighted": 1.04,
+      "behavior_score": 30.21,
+      "behavior_weighted": 6.04,
+      "boost_applied": false,
+      "boost_amount": 0.0,
+      "top_shap_contributors": [
+        {
+          "rank": 1,
+          "feature": "F3914",
+          "label": "Binary feature, 0.0% missing; RF importance rank #118",
+          "shap_value": 1.893385,
+          "direction": "+",
+          "feature_value": 0.0
+        },
+        {
+          "rank": 2,
+          "feature": "F3898",
+          "label": "Continuous feature, 0.0% missing; RF importance rank #6",
+          "shap_value": 1.822004,
+          "direction": "+",
+          "feature_value": -1.0
+        },
+        {
+          "rank": 3,
+          "feature": "F3908",
+          "label": "Binary feature, 0.0% missing; RF importance rank #39",
+          "shap_value": 0.917765,
+          "direction": "+",
+          "feature_value": 1.0
+        },
+        {
+          "rank": 4,
+          "feature": "F1863",
+          "label": "Continuous feature, 0.04% missing; RF importance rank #12",
+          "shap_value": 0.74301,
+          "direction": "+",
+          "feature_value": -0.169389
+        },
+        {
+          "rank": 5,
+          "feature": "F3807",
+          "label": "Continuous feature, 0.0% missing; RF importance rank #2",
+          "shap_value": 0.690681,
+          "direction": "+",
+          "feature_value": -0.304311
+        }
+      ],
+      "narrative": "Account A9005 — HIGH RISK (risk score: 75.95)\n\nML Component (weight: 70%): ML score = 98.39. Weighted contribution = 68.87.\n  Top SHAP drivers:\n  F3914 (Binary feature, 0.0% missing; RF importance rank #118): +1.8934\n  F3898 (Continuous feature, 0.0% missing; RF importance rank #6): +1.8220\n  F3908 (Binary feature, 0.0% missing; RF importance rank #39): +0.9178\n\nStatistical Anomaly (weight: 10%): Score = 10.36. Weighted contribution = 1.04. This is below the test-set average (24.12).\n\nBehavioral Anomaly (weight: 20%): LOF percentile = 30.21. Weighted contribution = 6.04.\n\nAssessment: Alert primarily driven by ML."
+    },
+    "A9068": {
+      "account_id": "A9068",
+      "target": 1,
+      "risk_score": 47.53,
+      "risk_band": "Monitor",
+      "recommended_action": "Enhanced monitoring",
+      "ml_score": 48.19,
+      "ml_weighted": 33.73,
+      "stat_score": 3.83,
+      "stat_weighted": 0.38,
+      "behavior_score": 67.09,
+      "behavior_weighted": 13.42,
+      "boost_applied": false,
+      "boost_amount": 0.0,
+      "top_shap_contributors": [
+        {
+          "rank": 1,
+          "feature": "F3898",
+          "label": "Continuous feature, 0.0% missing; RF importance rank #6",
+          "shap_value": 2.037736,
+          "direction": "+",
+          "feature_value": -0.666667
+        },
+        {
+          "rank": 2,
+          "feature": "F3914",
+          "label": "Binary feature, 0.0% missing; RF importance rank #118",
+          "shap_value": 1.532062,
+          "direction": "+",
+          "feature_value": 0.0
+        },
+        {
+          "rank": 3,
+          "feature": "F3908",
+          "label": "Binary feature, 0.0% missing; RF importance rank #39",
+          "shap_value": 0.916993,
+          "direction": "+",
+          "feature_value": 1.0
+        },
+        {
+          "rank": 4,
+          "feature": "F3750",
+          "label": "Continuous feature, 0.02% missing; RF importance rank #25",
+          "shap_value": 0.63611,
+          "direction": "+",
+          "feature_value": 0.248908
+        },
+        {
+          "rank": 5,
+          "feature": "F1863",
+          "label": "Continuous feature, 0.04% missing; RF importance rank #12",
+          "shap_value": 0.563277,
+          "direction": "+",
+          "feature_value": -0.145965
+        }
+      ],
+      "narrative": "Account A9068 — MONITOR (risk score: 47.53)\n\nML Component (weight: 70%): ML score = 48.19. Weighted contribution = 33.73.\n  Top SHAP drivers:\n  F3898 (Continuous feature, 0.0% missing; RF importance rank #6): +2.0377\n  F3914 (Binary feature, 0.0% missing; RF importance rank #118): +1.5321\n  F3908 (Binary feature, 0.0% missing; RF importance rank #39): +0.9170\n\nStatistical Anomaly (weight: 10%): Score = 3.83. Weighted contribution = 0.38. This is below the test-set average (24.12).\n\nBehavioral Anomaly (weight: 20%): LOF percentile = 67.09. Weighted contribution = 13.42.\n\nAssessment: Alert primarily driven by ML, Behavioral Anomaly."
+    },
+    "A4628": {
+      "account_id": "A4628",
+      "target": 0,
+      "risk_score": 32.54,
+      "risk_band": "Monitor",
+      "recommended_action": "Enhanced monitoring",
+      "ml_score": 0.0,
+      "ml_weighted": 0.0,
+      "stat_score": 27.12,
+      "stat_weighted": 2.71,
+      "behavior_score": 99.12,
+      "behavior_weighted": 19.82,
+      "boost_applied": true,
+      "boost_amount": 10.0,
+      "top_shap_contributors": [
+        {
+          "rank": 1,
+          "feature": "F3914",
+          "label": "Binary feature, 0.0% missing; RF importance rank #118",
+          "shap_value": -0.656489,
+          "direction": "-",
+          "feature_value": 1.0
+        },
+        {
+          "rank": 2,
+          "feature": "F3898",
+          "label": "Continuous feature, 0.0% missing; RF importance rank #6",
+          "shap_value": 0.562051,
+          "direction": "+",
+          "feature_value": -1.0
+        },
+        {
+          "rank": 3,
+          "feature": "F3750",
+          "label": "Continuous feature, 0.02% missing; RF importance rank #25",
+          "shap_value": -0.314112,
+          "direction": "-",
+          "feature_value": -0.510917
+        },
+        {
+          "rank": 4,
+          "feature": "F625",
+          "label": "Continuous feature, 0.18% missing; RF importance rank #162",
+          "shap_value": 0.187492,
+          "direction": "+",
+          "feature_value": -0.017295
+        },
+        {
+          "rank": 5,
+          "feature": "F3913",
+          "label": "Binary feature, 0.0% missing; RF importance rank #93",
+          "shap_value": 0.152901,
+          "direction": "+",
+          "feature_value": 0.0
+        }
+      ],
+      "narrative": "Account A4628 — MONITOR (risk score: 32.54)\n\nML Component (weight: 70%): ML score = 0.0. Weighted contribution = 0.0.\n  ML model assigned near-zero probability. SHAP contributions are minimal.\n\nStatistical Anomaly (weight: 10%): Score = 27.12. Weighted contribution = 2.71. This is above the test-set average (24.12).\n\nBehavioral Anomaly (weight: 20%): LOF percentile = 99.12. Weighted contribution = 19.82.\n  Behavioral boost of +10.0 applied (LOF percentile >= 99). Account is in the top 1% of behavioral outliers.\n\nAssessment: Alert primarily driven by Behavioral Anomaly."
+    },
+    "A9051": {
+      "account_id": "A9051",
+      "target": 1,
+      "risk_score": 35.89,
+      "risk_band": "Monitor",
+      "recommended_action": "Enhanced monitoring",
+      "ml_score": 43.01,
+      "ml_weighted": 30.11,
+      "stat_score": 18.75,
+      "stat_weighted": 1.87,
+      "behavior_score": 19.54,
+      "behavior_weighted": 3.91,
+      "boost_applied": false,
+      "boost_amount": 0.0,
+      "top_shap_contributors": [
+        {
+          "rank": 1,
+          "feature": "F3898",
+          "label": "Continuous feature, 0.0% missing; RF importance rank #6",
+          "shap_value": -2.480163,
+          "direction": "-",
+          "feature_value": 0.0
+        },
+        {
+          "rank": 2,
+          "feature": "F3801",
+          "label": "Continuous feature, 0.0% missing; RF importance rank #1",
+          "shap_value": 0.777097,
+          "direction": "+",
+          "feature_value": -0.289654
+        },
+        {
+          "rank": 3,
+          "feature": "F3914",
+          "label": "Binary feature, 0.0% missing; RF importance rank #118",
+          "shap_value": 0.699369,
+          "direction": "+",
+          "feature_value": 0.0
+        },
+        {
+          "rank": 4,
+          "feature": "F1863",
+          "label": "Continuous feature, 0.04% missing; RF importance rank #12",
+          "shap_value": 0.575368,
+          "direction": "+",
+          "feature_value": -0.233706
+        },
+        {
+          "rank": 5,
+          "feature": "F2453",
+          "label": "Continuous feature, 8.36% missing; RF importance rank #45",
+          "shap_value": 0.570233,
+          "direction": "+",
+          "feature_value": -0.584475
+        }
+      ],
+      "narrative": "Account A9051 — MONITOR (risk score: 35.89)\n\nML Component (weight: 70%): ML score = 43.01. Weighted contribution = 30.11.\n  Top SHAP drivers:\n  F3898 (Continuous feature, 0.0% missing; RF importance rank #6): -2.4802\n  F3801 (Continuous feature, 0.0% missing; RF importance rank #1): +0.7771\n  F3914 (Binary feature, 0.0% missing; RF importance rank #118): +0.6994\n\nStatistical Anomaly (weight: 10%): Score = 18.75. Weighted contribution = 1.87. This is below the test-set average (24.12).\n\nBehavioral Anomaly (weight: 20%): LOF percentile = 19.54. Weighted contribution = 3.91.\n\nAssessment: Alert primarily driven by ML."
+    },
+    "A6225": {
+      "account_id": "A6225",
+      "target": 0,
+      "risk_score": 32.28,
+      "risk_band": "Monitor",
+      "recommended_action": "Enhanced monitoring",
+      "ml_score": 0.0,
+      "ml_weighted": 0.0,
+      "stat_score": 24.63,
+      "stat_weighted": 2.46,
+      "behavior_score": 99.06,
+      "behavior_weighted": 19.81,
+      "boost_applied": true,
+      "boost_amount": 10.0,
+      "top_shap_contributors": [
+        {
+          "rank": 1,
+          "feature": "F435",
+          "label": "Continuous feature, 6.99% missing; RF importance rank #168",
+          "shap_value": 0.62729,
+          "direction": "+",
+          "feature_value": 1.0
+        },
+        {
+          "rank": 2,
+          "feature": "F3898",
+          "label": "Continuous feature, 0.0% missing; RF importance rank #6",
+          "shap_value": -0.548959,
+          "direction": "-",
+          "feature_value": 0.0
+        },
+        {
+          "rank": 3,
+          "feature": "F2649",
+          "label": "Continuous feature, 4.44% missing; RF importance rank #404",
+          "shap_value": 0.545726,
+          "direction": "+",
+          "feature_value": -0.75
+        },
+        {
+          "rank": 4,
+          "feature": "F3801",
+          "label": "Continuous feature, 0.0% missing; RF importance rank #1",
+          "shap_value": -0.389912,
+          "direction": "-",
+          "feature_value": 4.722956
+        },
+        {
+          "rank": 5,
+          "feature": "F3914",
+          "label": "Binary feature, 0.0% missing; RF importance rank #118",
+          "shap_value": 0.245362,
+          "direction": "+",
+          "feature_value": 0.0
+        }
+      ],
+      "narrative": "Account A6225 — MONITOR (risk score: 32.28)\n\nML Component (weight: 70%): ML score = 0.0. Weighted contribution = 0.0.\n  ML model assigned near-zero probability. SHAP contributions are minimal.\n\nStatistical Anomaly (weight: 10%): Score = 24.63. Weighted contribution = 2.46. This is above the test-set average (24.12).\n\nBehavioral Anomaly (weight: 20%): LOF percentile = 99.06. Weighted contribution = 19.81.\n  Behavioral boost of +10.0 applied (LOF percentile >= 99). Account is in the top 1% of behavioral outliers.\n\nAssessment: Alert primarily driven by Behavioral Anomaly."
+    },
+    "A2402": {
+      "account_id": "A2402",
+      "target": 0,
+      "risk_score": 33.77,
+      "risk_band": "Monitor",
+      "recommended_action": "Enhanced monitoring",
+      "ml_score": 2.98,
+      "ml_weighted": 2.09,
+      "stat_score": 18.13,
+      "stat_weighted": 1.81,
+      "behavior_score": 99.34,
+      "behavior_weighted": 19.87,
+      "boost_applied": true,
+      "boost_amount": 10.0,
+      "top_shap_contributors": [
+        {
+          "rank": 1,
+          "feature": "F3898",
+          "label": "Continuous feature, 0.0% missing; RF importance rank #6",
+          "shap_value": 1.454795,
+          "direction": "+",
+          "feature_value": -1.0
+        },
+        {
+          "rank": 2,
+          "feature": "F3914",
+          "label": "Binary feature, 0.0% missing; RF importance rank #118",
+          "shap_value": 1.396548,
+          "direction": "+",
+          "feature_value": 0.0
+        },
+        {
+          "rank": 3,
+          "feature": "F3908",
+          "label": "Binary feature, 0.0% missing; RF importance rank #39",
+          "shap_value": 0.634601,
+          "direction": "+",
+          "feature_value": 1.0
+        },
+        {
+          "rank": 4,
+          "feature": "F625",
+          "label": "Continuous feature, 0.18% missing; RF importance rank #162",
+          "shap_value": -0.359025,
+          "direction": "-",
+          "feature_value": 0.311311
+        },
+        {
+          "rank": 5,
+          "feature": "F3873",
+          "label": "Continuous feature, 0.02% missing; RF importance rank #36",
+          "shap_value": -0.336801,
+          "direction": "-",
+          "feature_value": 0.70407
+        }
+      ],
+      "narrative": "Account A2402 — MONITOR (risk score: 33.77)\n\nML Component (weight: 70%): ML score = 2.98. Weighted contribution = 2.09.\n  Top SHAP drivers:\n  F3898 (Continuous feature, 0.0% missing; RF importance rank #6): +1.4548\n  F3914 (Binary feature, 0.0% missing; RF importance rank #118): +1.3965\n  F3908 (Binary feature, 0.0% missing; RF importance rank #39): +0.6346\n\nStatistical Anomaly (weight: 10%): Score = 18.13. Weighted contribution = 1.81. This is below the test-set average (24.12).\n\nBehavioral Anomaly (weight: 20%): LOF percentile = 99.34. Weighted contribution = 19.87.\n  Behavioral boost of +10.0 applied (LOF percentile >= 99). Account is in the top 1% of behavioral outliers.\n\nAssessment: Alert primarily driven by Behavioral Anomaly."
+    },
+    "A5825": {
+      "account_id": "A5825",
+      "target": 0,
+      "risk_score": 33.62,
+      "risk_band": "Monitor",
+      "recommended_action": "Enhanced monitoring",
+      "ml_score": 0.0,
+      "ml_weighted": 0.0,
+      "stat_score": 37.61,
+      "stat_weighted": 3.76,
+      "behavior_score": 99.28,
+      "behavior_weighted": 19.86,
+      "boost_applied": true,
+      "boost_amount": 10.0,
+      "top_shap_contributors": [
+        {
+          "rank": 1,
+          "feature": "F3914",
+          "label": "Binary feature, 0.0% missing; RF importance rank #118",
+          "shap_value": -0.555527,
+          "direction": "-",
+          "feature_value": 1.0
+        },
+        {
+          "rank": 2,
+          "feature": "F3898",
+          "label": "Continuous feature, 0.0% missing; RF importance rank #6",
+          "shap_value": 0.420872,
+          "direction": "+",
+          "feature_value": -0.666667
+        },
+        {
+          "rank": 3,
+          "feature": "F1863",
+          "label": "Continuous feature, 0.04% missing; RF importance rank #12",
+          "shap_value": -0.286882,
+          "direction": "-",
+          "feature_value": 1.674008
+        },
+        {
+          "rank": 4,
+          "feature": "F999",
+          "label": "Continuous feature, 0.18% missing; RF importance rank #37",
+          "shap_value": -0.162775,
+          "direction": "-",
+          "feature_value": -0.32
+        },
+        {
+          "rank": 5,
+          "feature": "F1897",
+          "label": "Continuous feature, 0.04% missing; RF importance rank #461",
+          "shap_value": -0.15809,
+          "direction": "-",
+          "feature_value": 3775246.22
+        }
+      ],
+      "narrative": "Account A5825 — MONITOR (risk score: 33.62)\n\nML Component (weight: 70%): ML score = 0.0. Weighted contribution = 0.0.\n  ML model assigned near-zero probability. SHAP contributions are minimal.\n\nStatistical Anomaly (weight: 10%): Score = 37.61. Weighted contribution = 3.76. This is above the test-set average (24.12).\n\nBehavioral Anomaly (weight: 20%): LOF percentile = 99.28. Weighted contribution = 19.86.\n  Behavioral boost of +10.0 applied (LOF percentile >= 99). Account is in the top 1% of behavioral outliers.\n\nAssessment: Alert primarily driven by Behavioral Anomaly."
+    },
+    "A9073": {
+      "account_id": "A9073",
+      "target": 1,
+      "risk_score": 81.52,
+      "risk_band": "Critical",
+      "recommended_action": "Immediate review",
+      "ml_score": 100.0,
+      "ml_weighted": 70.0,
+      "stat_score": 27.74,
+      "stat_weighted": 2.77,
+      "behavior_score": 43.75,
+      "behavior_weighted": 8.75,
+      "boost_applied": false,
+      "boost_amount": 0.0,
+      "top_shap_contributors": [
+        {
+          "rank": 1,
+          "feature": "F3898",
+          "label": "Continuous feature, 0.0% missing; RF importance rank #6",
+          "shap_value": 3.086521,
+          "direction": "+",
+          "feature_value": -0.666667
+        },
+        {
+          "rank": 2,
+          "feature": "F3914",
+          "label": "Binary feature, 0.0% missing; RF importance rank #118",
+          "shap_value": 1.920942,
+          "direction": "+",
+          "feature_value": 0.0
+        },
+        {
+          "rank": 3,
+          "feature": "F3908",
+          "label": "Binary feature, 0.0% missing; RF importance rank #39",
+          "shap_value": 1.140902,
+          "direction": "+",
+          "feature_value": 1.0
+        },
+        {
+          "rank": 4,
+          "feature": "F3750",
+          "label": "Continuous feature, 0.02% missing; RF importance rank #25",
+          "shap_value": 0.999443,
+          "direction": "+",
+          "feature_value": 1.034934
+        },
+        {
+          "rank": 5,
+          "feature": "F3807",
+          "label": "Continuous feature, 0.0% missing; RF importance rank #2",
+          "shap_value": 0.890436,
+          "direction": "+",
+          "feature_value": -0.287038
+        }
+      ],
+      "narrative": "Account A9073 — CRITICAL (risk score: 81.52)\n\nML Component (weight: 70%): ML score = 100.0. Weighted contribution = 70.0.\n  Top SHAP drivers:\n  F3898 (Continuous feature, 0.0% missing; RF importance rank #6): +3.0865\n  F3914 (Binary feature, 0.0% missing; RF importance rank #118): +1.9209\n  F3908 (Binary feature, 0.0% missing; RF importance rank #39): +1.1409\n\nStatistical Anomaly (weight: 10%): Score = 27.74. Weighted contribution = 2.77. This is above the test-set average (24.12).\n\nBehavioral Anomaly (weight: 20%): LOF percentile = 43.75. Weighted contribution = 8.75.\n\nAssessment: Alert primarily driven by ML."
+    },
+    "A8574": {
+      "account_id": "A8574",
+      "target": 0,
+      "risk_score": 31.82,
+      "risk_band": "Monitor",
+      "recommended_action": "Enhanced monitoring",
+      "ml_score": 0.0,
+      "ml_weighted": 0.0,
+      "stat_score": 18.18,
+      "stat_weighted": 1.82,
+      "behavior_score": 100.0,
+      "behavior_weighted": 20.0,
+      "boost_applied": true,
+      "boost_amount": 10.0,
+      "top_shap_contributors": [
+        {
+          "rank": 1,
+          "feature": "F3898",
+          "label": "Continuous feature, 0.0% missing; RF importance rank #6",
+          "shap_value": -0.738181,
+          "direction": "-",
+          "feature_value": 0.0
+        },
+        {
+          "rank": 2,
+          "feature": "F3914",
+          "label": "Binary feature, 0.0% missing; RF importance rank #118",
+          "shap_value": 0.313787,
+          "direction": "+",
+          "feature_value": 0.0
+        },
+        {
+          "rank": 3,
+          "feature": "F435",
+          "label": "Continuous feature, 6.99% missing; RF importance rank #168",
+          "shap_value": 0.313438,
+          "direction": "+",
+          "feature_value": 2.15625
+        },
+        {
+          "rank": 4,
+          "feature": "F625",
+          "label": "Continuous feature, 0.18% missing; RF importance rank #162",
+          "shap_value": 0.297207,
+          "direction": "+",
+          "feature_value": -0.03459
+        },
+        {
+          "rank": 5,
+          "feature": "F3750",
+          "label": "Continuous feature, 0.02% missing; RF importance rank #25",
+          "shap_value": -0.19833,
+          "direction": "-",
+          "feature_value": -0.510917
+        }
+      ],
+      "narrative": "Account A8574 — MONITOR (risk score: 31.82)\n\nML Component (weight: 70%): ML score = 0.0. Weighted contribution = 0.0.\n  ML model assigned near-zero probability. SHAP contributions are minimal.\n\nStatistical Anomaly (weight: 10%): Score = 18.18. Weighted contribution = 1.82. This is below the test-set average (24.12).\n\nBehavioral Anomaly (weight: 20%): LOF percentile = 100.0. Weighted contribution = 20.0.\n  Behavioral boost of +10.0 applied (LOF percentile >= 99). Account is in the top 1% of behavioral outliers.\n\nAssessment: Alert primarily driven by Behavioral Anomaly."
+    },
+    "A9037": {
+      "account_id": "A9037",
+      "target": 1,
+      "risk_score": 85.81,
+      "risk_band": "Critical",
+      "recommended_action": "Immediate review",
+      "ml_score": 99.25,
+      "ml_weighted": 69.48,
+      "stat_score": 17.23,
+      "stat_weighted": 1.72,
+      "behavior_score": 73.03,
+      "behavior_weighted": 14.61,
+      "boost_applied": false,
+      "boost_amount": 0.0,
+      "top_shap_contributors": [
+        {
+          "rank": 1,
+          "feature": "F3898",
+          "label": "Continuous feature, 0.0% missing; RF importance rank #6",
+          "shap_value": 2.016625,
+          "direction": "+",
+          "feature_value": -0.666667
+        },
+        {
+          "rank": 2,
+          "feature": "F3914",
+          "label": "Binary feature, 0.0% missing; RF importance rank #118",
+          "shap_value": 1.11031,
+          "direction": "+",
+          "feature_value": 0.0
+        },
+        {
+          "rank": 3,
+          "feature": "F3908",
+          "label": "Binary feature, 0.0% missing; RF importance rank #39",
+          "shap_value": 0.896514,
+          "direction": "+",
+          "feature_value": 1.0
+        },
+        {
+          "rank": 4,
+          "feature": "F435",
+          "label": "Continuous feature, 6.99% missing; RF importance rank #168",
+          "shap_value": 0.643023,
+          "direction": "+",
+          "feature_value": 1.1875
+        },
+        {
+          "rank": 5,
+          "feature": "F3750",
+          "label": "Continuous feature, 0.02% missing; RF importance rank #25",
+          "shap_value": 0.625642,
+          "direction": "+",
+          "feature_value": 0.9869
+        }
+      ],
+      "narrative": "Account A9037 — CRITICAL (risk score: 85.81)\n\nML Component (weight: 70%): ML score = 99.25. Weighted contribution = 69.48.\n  Top SHAP drivers:\n  F3898 (Continuous feature, 0.0% missing; RF importance rank #6): +2.0166\n  F3914 (Binary feature, 0.0% missing; RF importance rank #118): +1.1103\n  F3908 (Binary feature, 0.0% missing; RF importance rank #39): +0.8965\n\nStatistical Anomaly (weight: 10%): Score = 17.23. Weighted contribution = 1.72. This is below the test-set average (24.12).\n\nBehavioral Anomaly (weight: 20%): LOF percentile = 73.03. Weighted contribution = 14.61.\n\nAssessment: Alert primarily driven by ML, Behavioral Anomaly."
+    },
+    "A9066": {
+      "account_id": "A9066",
+      "target": 1,
+      "risk_score": 60.36,
+      "risk_band": "High Risk",
+      "recommended_action": "Manual investigation",
+      "ml_score": 73.95,
+      "ml_weighted": 51.76,
+      "stat_score": 58.14,
+      "stat_weighted": 5.81,
+      "behavior_score": 13.92,
+      "behavior_weighted": 2.78,
+      "boost_applied": false,
+      "boost_amount": 0.0,
+      "top_shap_contributors": [
+        {
+          "rank": 1,
+          "feature": "F3898",
+          "label": "Continuous feature, 0.0% missing; RF importance rank #6",
+          "shap_value": 1.509855,
+          "direction": "+",
+          "feature_value": -1.0
+        },
+        {
+          "rank": 2,
+          "feature": "F3914",
+          "label": "Binary feature, 0.0% missing; RF importance rank #118",
+          "shap_value": 1.215664,
+          "direction": "+",
+          "feature_value": 0.0
+        },
+        {
+          "rank": 3,
+          "feature": "F1922",
+          "label": "Continuous feature, 0.14% missing; RF importance rank #5",
+          "shap_value": 0.695137,
+          "direction": "+",
+          "feature_value": -0.186531
+        },
+        {
+          "rank": 4,
+          "feature": "F1166",
+          "label": "Continuous feature, 0.02% missing; RF importance rank #14",
+          "shap_value": 0.682422,
+          "direction": "+",
+          "feature_value": -0.243637
+        },
+        {
+          "rank": 5,
+          "feature": "F1921",
+          "label": "Continuous feature, 0.14% missing; RF importance rank #7",
+          "shap_value": 0.679702,
+          "direction": "+",
+          "feature_value": -0.230174
+        }
+      ],
+      "narrative": "Account A9066 — HIGH RISK (risk score: 60.36)\n\nML Component (weight: 70%): ML score = 73.95. Weighted contribution = 51.76.\n  Top SHAP drivers:\n  F3898 (Continuous feature, 0.0% missing; RF importance rank #6): +1.5099\n  F3914 (Binary feature, 0.0% missing; RF importance rank #118): +1.2157\n  F1922 (Continuous feature, 0.14% missing; RF importance rank #5): +0.6951\n\nStatistical Anomaly (weight: 10%): Score = 58.14. Weighted contribution = 5.81. This is above the test-set average (24.12).\n\nBehavioral Anomaly (weight: 20%): LOF percentile = 13.92. Weighted contribution = 2.78.\n\nAssessment: Alert primarily driven by ML, Statistical Anomaly."
+    },
+    "A1097": {
+      "account_id": "A1097",
+      "target": 0,
+      "risk_score": 33.36,
+      "risk_band": "Monitor",
+      "recommended_action": "Enhanced monitoring",
+      "ml_score": 0.0,
+      "ml_weighted": 0.0,
+      "stat_score": 34.27,
+      "stat_weighted": 3.43,
+      "behavior_score": 99.67,
+      "behavior_weighted": 19.93,
+      "boost_applied": true,
+      "boost_amount": 10.0,
+      "top_shap_contributors": [
+        {
+          "rank": 1,
+          "feature": "F886",
+          "label": "Binary feature, 0.02% missing; RF importance rank #1083",
+          "shap_value": 0.69546,
+          "direction": "+",
+          "feature_value": 1.0
+        },
+        {
+          "rank": 2,
+          "feature": "F3898",
+          "label": "Continuous feature, 0.0% missing; RF importance rank #6",
+          "shap_value": -0.457804,
+          "direction": "-",
+          "feature_value": 0.0
+        },
+        {
+          "rank": 3,
+          "feature": "F3801",
+          "label": "Continuous feature, 0.0% missing; RF importance rank #1",
+          "shap_value": 0.370126,
+          "direction": "+",
+          "feature_value": -0.2792
+        },
+        {
+          "rank": 4,
+          "feature": "F1704",
+          "label": "Continuous feature, 0.08% missing; RF importance rank #105",
+          "shap_value": -0.221273,
+          "direction": "-",
+          "feature_value": -0.491228
+        },
+        {
+          "rank": 5,
+          "feature": "F1922",
+          "label": "Continuous feature, 0.14% missing; RF importance rank #5",
+          "shap_value": -0.217485,
+          "direction": "-",
+          "feature_value": 3.173199
+        }
+      ],
+      "narrative": "Account A1097 — MONITOR (risk score: 33.36)\n\nML Component (weight: 70%): ML score = 0.0. Weighted contribution = 0.0.\n  ML model assigned near-zero probability. SHAP contributions are minimal.\n\nStatistical Anomaly (weight: 10%): Score = 34.27. Weighted contribution = 3.43. This is above the test-set average (24.12).\n\nBehavioral Anomaly (weight: 20%): LOF percentile = 99.67. Weighted contribution = 19.93.\n  Behavioral boost of +10.0 applied (LOF percentile >= 99). Account is in the top 1% of behavioral outliers.\n\nAssessment: Alert primarily driven by Behavioral Anomaly."
+    },
+    "A7543": {
+      "account_id": "A7543",
+      "target": 0,
+      "risk_score": 30.76,
+      "risk_band": "Monitor",
+      "recommended_action": "Enhanced monitoring",
+      "ml_score": 0.02,
+      "ml_weighted": 0.01,
+      "stat_score": 8.02,
+      "stat_weighted": 0.8,
+      "behavior_score": 99.72,
+      "behavior_weighted": 19.94,
+      "boost_applied": true,
+      "boost_amount": 10.0,
+      "top_shap_contributors": [
+        {
+          "rank": 1,
+          "feature": "F3914",
+          "label": "Binary feature, 0.0% missing; RF importance rank #118",
+          "shap_value": -0.882214,
+          "direction": "-",
+          "feature_value": 1.0
+        },
+        {
+          "rank": 2,
+          "feature": "F3898",
+          "label": "Continuous feature, 0.0% missing; RF importance rank #6",
+          "shap_value": 0.722725,
+          "direction": "+",
+          "feature_value": -1.0
+        },
+        {
+          "rank": 3,
+          "feature": "F270",
+          "label": "Continuous feature, 35.99% missing; RF importance rank #40",
+          "shap_value": 0.480732,
+          "direction": "+",
+          "feature_value": 0.875
+        },
+        {
+          "rank": 4,
+          "feature": "F2453",
+          "label": "Continuous feature, 8.36% missing; RF importance rank #45",
+          "shap_value": 0.393657,
+          "direction": "+",
+          "feature_value": -0.621005
+        },
+        {
+          "rank": 5,
+          "feature": "F3750",
+          "label": "Continuous feature, 0.02% missing; RF importance rank #25",
+          "shap_value": 0.375293,
+          "direction": "+",
+          "feature_value": 0.270742
+        }
+      ],
+      "narrative": "Account A7543 — MONITOR (risk score: 30.76)\n\nML Component (weight: 70%): ML score = 0.02. Weighted contribution = 0.01.\n  ML model assigned near-zero probability. SHAP contributions are minimal.\n\nStatistical Anomaly (weight: 10%): Score = 8.02. Weighted contribution = 0.8. This is below the test-set average (24.12).\n\nBehavioral Anomaly (weight: 20%): LOF percentile = 99.72. Weighted contribution = 19.94.\n  Behavioral boost of +10.0 applied (LOF percentile >= 99). Account is in the top 1% of behavioral outliers.\n\nAssessment: Alert primarily driven by Behavioral Anomaly."
+    },
+    "A4840": {
+      "account_id": "A4840",
+      "target": 0,
+      "risk_score": 32.27,
+      "risk_band": "Monitor",
+      "recommended_action": "Enhanced monitoring",
+      "ml_score": 0.0,
+      "ml_weighted": 0.0,
+      "stat_score": 23.81,
+      "stat_weighted": 2.38,
+      "behavior_score": 99.45,
+      "behavior_weighted": 19.89,
+      "boost_applied": true,
+      "boost_amount": 10.0,
+      "top_shap_contributors": [
+        {
+          "rank": 1,
+          "feature": "F3898",
+          "label": "Continuous feature, 0.0% missing; RF importance rank #6",
+          "shap_value": 0.77009,
+          "direction": "+",
+          "feature_value": -1.0
+        },
+        {
+          "rank": 2,
+          "feature": "F949",
+          "label": "Continuous feature, 0.18% missing; RF importance rank #4",
+          "shap_value": 0.660759,
+          "direction": "+",
+          "feature_value": -0.255895
+        },
+        {
+          "rank": 3,
+          "feature": "F3801",
+          "label": "Continuous feature, 0.0% missing; RF importance rank #1",
+          "shap_value": 0.605679,
+          "direction": "+",
+          "feature_value": -0.304393
+        },
+        {
+          "rank": 4,
+          "feature": "F3914",
+          "label": "Binary feature, 0.0% missing; RF importance rank #118",
+          "shap_value": -0.332536,
+          "direction": "-",
+          "feature_value": 1.0
+        },
+        {
+          "rank": 5,
+          "feature": "F1922",
+          "label": "Continuous feature, 0.14% missing; RF importance rank #5",
+          "shap_value": 0.326909,
+          "direction": "+",
+          "feature_value": -0.193197
+        }
+      ],
+      "narrative": "Account A4840 — MONITOR (risk score: 32.27)\n\nML Component (weight: 70%): ML score = 0.0. Weighted contribution = 0.0.\n  ML model assigned near-zero probability. SHAP contributions are minimal.\n\nStatistical Anomaly (weight: 10%): Score = 23.81. Weighted contribution = 2.38. This is below the test-set average (24.12).\n\nBehavioral Anomaly (weight: 20%): LOF percentile = 99.45. Weighted contribution = 19.89.\n  Behavioral boost of +10.0 applied (LOF percentile >= 99). Account is in the top 1% of behavioral outliers.\n\nAssessment: Alert primarily driven by Behavioral Anomaly."
+    }
+  },
+  "false_positives": {
+    "A428": {
+      "account_id": "A428",
+      "risk_score": 31.11,
+      "risk_band": "Monitor",
+      "ml_score": 0.0,
+      "stat_score": 11.57,
+      "behavior_score": 99.78,
+      "boost_applied": true,
+      "primary_false_alert_driver": "Behavioral Anomaly (LOF boost)",
+      "top_shap_contributors": [
+        {
+          "rank": 1,
+          "feature": "F3898",
+          "label": "Continuous feature, 0.0% missing; RF importance rank #6",
+          "shap_value": -0.565272,
+          "direction": "-",
+          "feature_value": 0.0
+        },
+        {
+          "rank": 2,
+          "feature": "F3750",
+          "label": "Continuous feature, 0.02% missing; RF importance rank #25",
+          "shap_value": -0.329454,
+          "direction": "-",
+          "feature_value": -0.510917
+        },
+        {
+          "rank": 3,
+          "feature": "F3914",
+          "label": "Binary feature, 0.0% missing; RF importance rank #118",
+          "shap_value": 0.288165,
+          "direction": "+",
+          "feature_value": 0.0
+        },
+        {
+          "rank": 4,
+          "feature": "F3071",
+          "label": "Continuous feature, 9.05% missing; RF importance rank #114",
+          "shap_value": -0.201954,
+          "direction": "-",
+          "feature_value": -0.683908
+        },
+        {
+          "rank": 5,
+          "feature": "F3751",
+          "label": "Continuous feature, 0.02% missing; RF importance rank #88",
+          "shap_value": -0.185331,
+          "direction": "-",
+          "feature_value": -0.445161
+        }
+      ],
+      "analysis": "Account A428 is a false positive (actual: normal, predicted band: Monitor). ML score is 0.0 (near zero), indicating the ML model correctly identified this as non-mule. The alert was triggered by the behavioral anomaly LOF percentile of 99.78 (with +10 boost applied), which pushed the fused score above the Normal threshold."
+    },
+    "A2617": {
+      "account_id": "A2617",
+      "risk_score": 32.26,
+      "risk_band": "Monitor",
+      "ml_score": 0.0,
+      "stat_score": 23.35,
+      "behavior_score": 99.61,
+      "boost_applied": true,
+      "primary_false_alert_driver": "Behavioral Anomaly (LOF boost)",
+      "top_shap_contributors": [
+        {
+          "rank": 1,
+          "feature": "F3898",
+          "label": "Continuous feature, 0.0% missing; RF importance rank #6",
+          "shap_value": -1.009821,
+          "direction": "-",
+          "feature_value": 0.0
+        },
+        {
+          "rank": 2,
+          "feature": "F3914",
+          "label": "Binary feature, 0.0% missing; RF importance rank #118",
+          "shap_value": 0.43709,
+          "direction": "+",
+          "feature_value": 0.0
+        },
+        {
+          "rank": 3,
+          "feature": "F2585",
+          "label": "Continuous feature, 37.48% missing; RF importance rank #611",
+          "shap_value": 0.368809,
+          "direction": "+",
+          "feature_value": 8.428571
+        },
+        {
+          "rank": 4,
+          "feature": "F3750",
+          "label": "Continuous feature, 0.02% missing; RF importance rank #25",
+          "shap_value": 0.287538,
+          "direction": "+",
+          "feature_value": 0.30131
+        },
+        {
+          "rank": 5,
+          "feature": "F2453",
+          "label": "Continuous feature, 8.36% missing; RF importance rank #45",
+          "shap_value": -0.266216,
+          "direction": "-",
+          "feature_value": 1.13242
+        }
+      ],
+      "analysis": "Account A2617 is a false positive (actual: normal, predicted band: Monitor). ML score is 0.0 (near zero), indicating the ML model correctly identified this as non-mule. The alert was triggered by the behavioral anomaly LOF percentile of 99.61 (with +10 boost applied), which pushed the fused score above the Normal threshold."
+    },
+    "A637": {
+      "account_id": "A637",
+      "risk_score": 31.24,
+      "risk_band": "Monitor",
+      "ml_score": 0.0,
+      "stat_score": 13.57,
+      "behavior_score": 99.39,
+      "boost_applied": true,
+      "primary_false_alert_driver": "Behavioral Anomaly (LOF boost)",
+      "top_shap_contributors": [
+        {
+          "rank": 1,
+          "feature": "F3898",
+          "label": "Continuous feature, 0.0% missing; RF importance rank #6",
+          "shap_value": 0.641243,
+          "direction": "+",
+          "feature_value": -0.666667
+        },
+        {
+          "rank": 2,
+          "feature": "F3914",
+          "label": "Binary feature, 0.0% missing; RF importance rank #118",
+          "shap_value": -0.597173,
+          "direction": "-",
+          "feature_value": 1.0
+        },
+        {
+          "rank": 3,
+          "feature": "F3750",
+          "label": "Continuous feature, 0.02% missing; RF importance rank #25",
+          "shap_value": -0.481522,
+          "direction": "-",
+          "feature_value": -0.510917
+        },
+        {
+          "rank": 4,
+          "feature": "F625",
+          "label": "Continuous feature, 0.18% missing; RF importance rank #162",
+          "shap_value": 0.202991,
+          "direction": "+",
+          "feature_value": -0.017295
+        },
+        {
+          "rank": 5,
+          "feature": "F2649",
+          "label": "Continuous feature, 4.44% missing; RF importance rank #404",
+          "shap_value": -0.192035,
+          "direction": "-",
+          "feature_value": 0.375
+        }
+      ],
+      "analysis": "Account A637 is a false positive (actual: normal, predicted band: Monitor). ML score is 0.0 (near zero), indicating the ML model correctly identified this as non-mule. The alert was triggered by the behavioral anomaly LOF percentile of 99.39 (with +10 boost applied), which pushed the fused score above the Normal threshold."
+    },
+    "A645": {
+      "account_id": "A645",
+      "risk_score": 33.24,
+      "risk_band": "Monitor",
+      "ml_score": 0.0,
+      "stat_score": 32.6,
+      "behavior_score": 99.89,
+      "boost_applied": true,
+      "primary_false_alert_driver": "Behavioral Anomaly (LOF boost)",
+      "top_shap_contributors": [
+        {
+          "rank": 1,
+          "feature": "F3898",
+          "label": "Continuous feature, 0.0% missing; RF importance rank #6",
+          "shap_value": -0.642444,
+          "direction": "-",
+          "feature_value": 0.0
+        },
+        {
+          "rank": 2,
+          "feature": "F3914",
+          "label": "Binary feature, 0.0% missing; RF importance rank #118",
+          "shap_value": 0.247972,
+          "direction": "+",
+          "feature_value": 0.0
+        },
+        {
+          "rank": 3,
+          "feature": "F996",
+          "label": "Binary feature, 0.18% missing; RF importance rank #56",
+          "shap_value": -0.244155,
+          "direction": "-",
+          "feature_value": 0.0
+        },
+        {
+          "rank": 4,
+          "feature": "F3908",
+          "label": "Binary feature, 0.0% missing; RF importance rank #39",
+          "shap_value": 0.224705,
+          "direction": "+",
+          "feature_value": 1.0
+        },
+        {
+          "rank": 5,
+          "feature": "F625",
+          "label": "Continuous feature, 0.18% missing; RF importance rank #162",
+          "shap_value": -0.209193,
+          "direction": "-",
+          "feature_value": 13.265306
+        }
+      ],
+      "analysis": "Account A645 is a false positive (actual: normal, predicted band: Monitor). ML score is 0.0 (near zero), indicating the ML model correctly identified this as non-mule. The alert was triggered by the behavioral anomaly LOF percentile of 99.89 (with +10 boost applied), which pushed the fused score above the Normal threshold."
+    },
+    "A5022": {
+      "account_id": "A5022",
+      "risk_score": 31.96,
+      "risk_band": "Monitor",
+      "ml_score": 0.0,
+      "stat_score": 20.47,
+      "behavior_score": 99.56,
+      "boost_applied": true,
+      "primary_false_alert_driver": "Behavioral Anomaly (LOF boost)",
+      "top_shap_contributors": [
+        {
+          "rank": 1,
+          "feature": "F3914",
+          "label": "Binary feature, 0.0% missing; RF importance rank #118",
+          "shap_value": -0.631905,
+          "direction": "-",
+          "feature_value": 1.0
+        },
+        {
+          "rank": 2,
+          "feature": "F3898",
+          "label": "Continuous feature, 0.0% missing; RF importance rank #6",
+          "shap_value": 0.584815,
+          "direction": "+",
+          "feature_value": -1.0
+        },
+        {
+          "rank": 3,
+          "feature": "F1922",
+          "label": "Continuous feature, 0.14% missing; RF importance rank #5",
+          "shap_value": 0.320712,
+          "direction": "+",
+          "feature_value": -0.193197
+        },
+        {
+          "rank": 4,
+          "feature": "F1863",
+          "label": "Continuous feature, 0.04% missing; RF importance rank #12",
+          "shap_value": 0.234574,
+          "direction": "+",
+          "feature_value": -0.288078
+        },
+        {
+          "rank": 5,
+          "feature": "F3750",
+          "label": "Continuous feature, 0.02% missing; RF importance rank #25",
+          "shap_value": -0.203683,
+          "direction": "-",
+          "feature_value": -0.510917
+        }
+      ],
+      "analysis": "Account A5022 is a false positive (actual: normal, predicted band: Monitor). ML score is 0.0 (near zero), indicating the ML model correctly identified this as non-mule. The alert was triggered by the behavioral anomaly LOF percentile of 99.56 (with +10 boost applied), which pushed the fused score above the Normal threshold."
+    },
+    "A1594": {
+      "account_id": "A1594",
+      "risk_score": 32.95,
+      "risk_band": "Monitor",
+      "ml_score": 0.0,
+      "stat_score": 29.82,
+      "behavior_score": 99.83,
+      "boost_applied": true,
+      "primary_false_alert_driver": "Behavioral Anomaly (LOF boost)",
+      "top_shap_contributors": [
+        {
+          "rank": 1,
+          "feature": "F3914",
+          "label": "Binary feature, 0.0% missing; RF importance rank #118",
+          "shap_value": -0.585908,
+          "direction": "-",
+          "feature_value": 1.0
+        },
+        {
+          "rank": 2,
+          "feature": "F3898",
+          "label": "Continuous feature, 0.0% missing; RF importance rank #6",
+          "shap_value": 0.579548,
+          "direction": "+",
+          "feature_value": -0.666667
+        },
+        {
+          "rank": 3,
+          "feature": "F2184",
+          "label": "Continuous feature, 0.04% missing; RF importance rank #9",
+          "shap_value": -0.276676,
+          "direction": "-",
+          "feature_value": -0.640191
+        },
+        {
+          "rank": 4,
+          "feature": "F3484",
+          "label": "Continuous feature, 0.09% missing; RF importance rank #65",
+          "shap_value": 0.240388,
+          "direction": "+",
+          "feature_value": 0.666667
+        },
+        {
+          "rank": 5,
+          "feature": "F3750",
+          "label": "Continuous feature, 0.02% missing; RF importance rank #25",
+          "shap_value": 0.235476,
+          "direction": "+",
+          "feature_value": 0.707424
+        }
+      ],
+      "analysis": "Account A1594 is a false positive (actual: normal, predicted band: Monitor). ML score is 0.0 (near zero), indicating the ML model correctly identified this as non-mule. The alert was triggered by the behavioral anomaly LOF percentile of 99.83 (with +10 boost applied), which pushed the fused score above the Normal threshold."
+    },
+    "A5068": {
+      "account_id": "A5068",
+      "risk_score": 31.59,
+      "risk_band": "Monitor",
+      "ml_score": 0.0,
+      "stat_score": 16.87,
+      "behavior_score": 99.5,
+      "boost_applied": true,
+      "primary_false_alert_driver": "Behavioral Anomaly (LOF boost)",
+      "top_shap_contributors": [
+        {
+          "rank": 1,
+          "feature": "F3898",
+          "label": "Continuous feature, 0.0% missing; RF importance rank #6",
+          "shap_value": 0.425326,
+          "direction": "+",
+          "feature_value": -1.0
+        },
+        {
+          "rank": 2,
+          "feature": "F3914",
+          "label": "Binary feature, 0.0% missing; RF importance rank #118",
+          "shap_value": -0.349644,
+          "direction": "-",
+          "feature_value": 1.0
+        },
+        {
+          "rank": 3,
+          "feature": "F1863",
+          "label": "Continuous feature, 0.04% missing; RF importance rank #12",
+          "shap_value": 0.192083,
+          "direction": "+",
+          "feature_value": -0.288078
+        },
+        {
+          "rank": 4,
+          "feature": "F3913",
+          "label": "Binary feature, 0.0% missing; RF importance rank #93",
+          "shap_value": 0.158871,
+          "direction": "+",
+          "feature_value": 0.0
+        },
+        {
+          "rank": 5,
+          "feature": "F1922",
+          "label": "Continuous feature, 0.14% missing; RF importance rank #5",
+          "shap_value": -0.151296,
+          "direction": "-",
+          "feature_value": 1.90787
+        }
+      ],
+      "analysis": "Account A5068 is a false positive (actual: normal, predicted band: Monitor). ML score is 0.0 (near zero), indicating the ML model correctly identified this as non-mule. The alert was triggered by the behavioral anomaly LOF percentile of 99.5 (with +10 boost applied), which pushed the fused score above the Normal threshold."
+    },
+    "A2030": {
+      "account_id": "A2030",
+      "risk_score": 32.31,
+      "risk_band": "Monitor",
+      "ml_score": 0.0,
+      "stat_score": 24.67,
+      "behavior_score": 99.23,
+      "boost_applied": true,
+      "primary_false_alert_driver": "Behavioral Anomaly (LOF boost)",
+      "top_shap_contributors": [
+        {
+          "rank": 1,
+          "feature": "F3898",
+          "label": "Continuous feature, 0.0% missing; RF importance rank #6",
+          "shap_value": -0.794907,
+          "direction": "-",
+          "feature_value": 0.0
+        },
+        {
+          "rank": 2,
+          "feature": "F435",
+          "label": "Continuous feature, 6.99% missing; RF importance rank #168",
+          "shap_value": 0.354319,
+          "direction": "+",
+          "feature_value": 1.21875
+        },
+        {
+          "rank": 3,
+          "feature": "F3914",
+          "label": "Binary feature, 0.0% missing; RF importance rank #118",
+          "shap_value": 0.348211,
+          "direction": "+",
+          "feature_value": 0.0
+        },
+        {
+          "rank": 4,
+          "feature": "F1863",
+          "label": "Continuous feature, 0.04% missing; RF importance rank #12",
+          "shap_value": -0.298992,
+          "direction": "-",
+          "feature_value": 1.480511
+        },
+        {
+          "rank": 5,
+          "feature": "F2388",
+          "label": "Continuous feature, 26.07% missing; RF importance rank #41",
+          "shap_value": 0.251106,
+          "direction": "+",
+          "feature_value": 89.421053
+        }
+      ],
+      "analysis": "Account A2030 is a false positive (actual: normal, predicted band: Monitor). ML score is 0.0 (near zero), indicating the ML model correctly identified this as non-mule. The alert was triggered by the behavioral anomaly LOF percentile of 99.23 (with +10 boost applied), which pushed the fused score above the Normal threshold."
+    },
+    "A1846": {
+      "account_id": "A1846",
+      "risk_score": 31.43,
+      "risk_band": "Monitor",
+      "ml_score": 0.0,
+      "stat_score": 16.26,
+      "behavior_score": 99.01,
+      "boost_applied": true,
+      "primary_false_alert_driver": "Behavioral Anomaly (LOF boost)",
+      "top_shap_contributors": [
+        {
+          "rank": 1,
+          "feature": "F3898",
+          "label": "Continuous feature, 0.0% missing; RF importance rank #6",
+          "shap_value": -1.140846,
+          "direction": "-",
+          "feature_value": 0.0
+        },
+        {
+          "rank": 2,
+          "feature": "F3914",
+          "label": "Binary feature, 0.0% missing; RF importance rank #118",
+          "shap_value": 0.376591,
+          "direction": "+",
+          "feature_value": 0.0
+        },
+        {
+          "rank": 3,
+          "feature": "F435",
+          "label": "Continuous feature, 6.99% missing; RF importance rank #168",
+          "shap_value": 0.255094,
+          "direction": "+",
+          "feature_value": 2.5625
+        },
+        {
+          "rank": 4,
+          "feature": "F3908",
+          "label": "Binary feature, 0.0% missing; RF importance rank #39",
+          "shap_value": 0.239947,
+          "direction": "+",
+          "feature_value": 1.0
+        },
+        {
+          "rank": 5,
+          "feature": "F625",
+          "label": "Continuous feature, 0.18% missing; RF importance rank #162",
+          "shap_value": 0.238158,
+          "direction": "+",
+          "feature_value": -0.03459
+        }
+      ],
+      "analysis": "Account A1846 is a false positive (actual: normal, predicted band: Monitor). ML score is 0.0 (near zero), indicating the ML model correctly identified this as non-mule. The alert was triggered by the behavioral anomaly LOF percentile of 99.01 (with +10 boost applied), which pushed the fused score above the Normal threshold."
+    },
+    "A4498": {
+      "account_id": "A4498",
+      "risk_score": 33.13,
+      "risk_band": "Monitor",
+      "ml_score": 0.0,
+      "stat_score": 31.43,
+      "behavior_score": 99.94,
+      "boost_applied": true,
+      "primary_false_alert_driver": "Behavioral Anomaly (LOF boost)",
+      "top_shap_contributors": [
+        {
+          "rank": 1,
+          "feature": "F886",
+          "label": "Binary feature, 0.02% missing; RF importance rank #1083",
+          "shap_value": 0.762585,
+          "direction": "+",
+          "feature_value": 1.0
+        },
+        {
+          "rank": 2,
+          "feature": "F3898",
+          "label": "Continuous feature, 0.0% missing; RF importance rank #6",
+          "shap_value": -0.627363,
+          "direction": "-",
+          "feature_value": 0.0
+        },
+        {
+          "rank": 3,
+          "feature": "F3801",
+          "label": "Continuous feature, 0.0% missing; RF importance rank #1",
+          "shap_value": -0.347568,
+          "direction": "-",
+          "feature_value": 1.762464
+        },
+        {
+          "rank": 4,
+          "feature": "F3914",
+          "label": "Binary feature, 0.0% missing; RF importance rank #118",
+          "shap_value": 0.303967,
+          "direction": "+",
+          "feature_value": 0.0
+        },
+        {
+          "rank": 5,
+          "feature": "F3913",
+          "label": "Binary feature, 0.0% missing; RF importance rank #93",
+          "shap_value": 0.263347,
+          "direction": "+",
+          "feature_value": 0.0
+        }
+      ],
+      "analysis": "Account A4498 is a false positive (actual: normal, predicted band: Monitor). ML score is 0.0 (near zero), indicating the ML model correctly identified this as non-mule. The alert was triggered by the behavioral anomaly LOF percentile of 99.94 (with +10 boost applied), which pushed the fused score above the Normal threshold."
+    },
+    "A4628": {
+      "account_id": "A4628",
+      "risk_score": 32.54,
+      "risk_band": "Monitor",
+      "ml_score": 0.0,
+      "stat_score": 27.12,
+      "behavior_score": 99.12,
+      "boost_applied": true,
+      "primary_false_alert_driver": "Behavioral Anomaly (LOF boost)",
+      "top_shap_contributors": [
+        {
+          "rank": 1,
+          "feature": "F3914",
+          "label": "Binary feature, 0.0% missing; RF importance rank #118",
+          "shap_value": -0.656489,
+          "direction": "-",
+          "feature_value": 1.0
+        },
+        {
+          "rank": 2,
+          "feature": "F3898",
+          "label": "Continuous feature, 0.0% missing; RF importance rank #6",
+          "shap_value": 0.562051,
+          "direction": "+",
+          "feature_value": -1.0
+        },
+        {
+          "rank": 3,
+          "feature": "F3750",
+          "label": "Continuous feature, 0.02% missing; RF importance rank #25",
+          "shap_value": -0.314112,
+          "direction": "-",
+          "feature_value": -0.510917
+        },
+        {
+          "rank": 4,
+          "feature": "F625",
+          "label": "Continuous feature, 0.18% missing; RF importance rank #162",
+          "shap_value": 0.187492,
+          "direction": "+",
+          "feature_value": -0.017295
+        },
+        {
+          "rank": 5,
+          "feature": "F3913",
+          "label": "Binary feature, 0.0% missing; RF importance rank #93",
+          "shap_value": 0.152901,
+          "direction": "+",
+          "feature_value": 0.0
+        }
+      ],
+      "analysis": "Account A4628 is a false positive (actual: normal, predicted band: Monitor). ML score is 0.0 (near zero), indicating the ML model correctly identified this as non-mule. The alert was triggered by the behavioral anomaly LOF percentile of 99.12 (with +10 boost applied), which pushed the fused score above the Normal threshold."
+    },
+    "A6225": {
+      "account_id": "A6225",
+      "risk_score": 32.28,
+      "risk_band": "Monitor",
+      "ml_score": 0.0,
+      "stat_score": 24.63,
+      "behavior_score": 99.06,
+      "boost_applied": true,
+      "primary_false_alert_driver": "Behavioral Anomaly (LOF boost)",
+      "top_shap_contributors": [
+        {
+          "rank": 1,
+          "feature": "F435",
+          "label": "Continuous feature, 6.99% missing; RF importance rank #168",
+          "shap_value": 0.62729,
+          "direction": "+",
+          "feature_value": 1.0
+        },
+        {
+          "rank": 2,
+          "feature": "F3898",
+          "label": "Continuous feature, 0.0% missing; RF importance rank #6",
+          "shap_value": -0.548959,
+          "direction": "-",
+          "feature_value": 0.0
+        },
+        {
+          "rank": 3,
+          "feature": "F2649",
+          "label": "Continuous feature, 4.44% missing; RF importance rank #404",
+          "shap_value": 0.545726,
+          "direction": "+",
+          "feature_value": -0.75
+        },
+        {
+          "rank": 4,
+          "feature": "F3801",
+          "label": "Continuous feature, 0.0% missing; RF importance rank #1",
+          "shap_value": -0.389912,
+          "direction": "-",
+          "feature_value": 4.722956
+        },
+        {
+          "rank": 5,
+          "feature": "F3914",
+          "label": "Binary feature, 0.0% missing; RF importance rank #118",
+          "shap_value": 0.245362,
+          "direction": "+",
+          "feature_value": 0.0
+        }
+      ],
+      "analysis": "Account A6225 is a false positive (actual: normal, predicted band: Monitor). ML score is 0.0 (near zero), indicating the ML model correctly identified this as non-mule. The alert was triggered by the behavioral anomaly LOF percentile of 99.06 (with +10 boost applied), which pushed the fused score above the Normal threshold."
+    },
+    "A2402": {
+      "account_id": "A2402",
+      "risk_score": 33.77,
+      "risk_band": "Monitor",
+      "ml_score": 2.98,
+      "stat_score": 18.13,
+      "behavior_score": 99.34,
+      "boost_applied": true,
+      "primary_false_alert_driver": "Behavioral Anomaly (LOF boost)",
+      "top_shap_contributors": [
+        {
+          "rank": 1,
+          "feature": "F3898",
+          "label": "Continuous feature, 0.0% missing; RF importance rank #6",
+          "shap_value": 1.454795,
+          "direction": "+",
+          "feature_value": -1.0
+        },
+        {
+          "rank": 2,
+          "feature": "F3914",
+          "label": "Binary feature, 0.0% missing; RF importance rank #118",
+          "shap_value": 1.396548,
+          "direction": "+",
+          "feature_value": 0.0
+        },
+        {
+          "rank": 3,
+          "feature": "F3908",
+          "label": "Binary feature, 0.0% missing; RF importance rank #39",
+          "shap_value": 0.634601,
+          "direction": "+",
+          "feature_value": 1.0
+        },
+        {
+          "rank": 4,
+          "feature": "F625",
+          "label": "Continuous feature, 0.18% missing; RF importance rank #162",
+          "shap_value": -0.359025,
+          "direction": "-",
+          "feature_value": 0.311311
+        },
+        {
+          "rank": 5,
+          "feature": "F3873",
+          "label": "Continuous feature, 0.02% missing; RF importance rank #36",
+          "shap_value": -0.336801,
+          "direction": "-",
+          "feature_value": 0.70407
+        }
+      ],
+      "analysis": "Account A2402 is a false positive (actual: normal, predicted band: Monitor). ML score is 2.98 (near zero), indicating the ML model correctly identified this as non-mule. The alert was triggered by the behavioral anomaly LOF percentile of 99.34 (with +10 boost applied), which pushed the fused score above the Normal threshold."
+    },
+    "A5825": {
+      "account_id": "A5825",
+      "risk_score": 33.62,
+      "risk_band": "Monitor",
+      "ml_score": 0.0,
+      "stat_score": 37.61,
+      "behavior_score": 99.28,
+      "boost_applied": true,
+      "primary_false_alert_driver": "Behavioral Anomaly (LOF boost)",
+      "top_shap_contributors": [
+        {
+          "rank": 1,
+          "feature": "F3914",
+          "label": "Binary feature, 0.0% missing; RF importance rank #118",
+          "shap_value": -0.555527,
+          "direction": "-",
+          "feature_value": 1.0
+        },
+        {
+          "rank": 2,
+          "feature": "F3898",
+          "label": "Continuous feature, 0.0% missing; RF importance rank #6",
+          "shap_value": 0.420872,
+          "direction": "+",
+          "feature_value": -0.666667
+        },
+        {
+          "rank": 3,
+          "feature": "F1863",
+          "label": "Continuous feature, 0.04% missing; RF importance rank #12",
+          "shap_value": -0.286882,
+          "direction": "-",
+          "feature_value": 1.674008
+        },
+        {
+          "rank": 4,
+          "feature": "F999",
+          "label": "Continuous feature, 0.18% missing; RF importance rank #37",
+          "shap_value": -0.162775,
+          "direction": "-",
+          "feature_value": -0.32
+        },
+        {
+          "rank": 5,
+          "feature": "F1897",
+          "label": "Continuous feature, 0.04% missing; RF importance rank #461",
+          "shap_value": -0.15809,
+          "direction": "-",
+          "feature_value": 3775246.22
+        }
+      ],
+      "analysis": "Account A5825 is a false positive (actual: normal, predicted band: Monitor). ML score is 0.0 (near zero), indicating the ML model correctly identified this as non-mule. The alert was triggered by the behavioral anomaly LOF percentile of 99.28 (with +10 boost applied), which pushed the fused score above the Normal threshold."
+    },
+    "A8574": {
+      "account_id": "A8574",
+      "risk_score": 31.82,
+      "risk_band": "Monitor",
+      "ml_score": 0.0,
+      "stat_score": 18.18,
+      "behavior_score": 100.0,
+      "boost_applied": true,
+      "primary_false_alert_driver": "Behavioral Anomaly (LOF boost)",
+      "top_shap_contributors": [
+        {
+          "rank": 1,
+          "feature": "F3898",
+          "label": "Continuous feature, 0.0% missing; RF importance rank #6",
+          "shap_value": -0.738181,
+          "direction": "-",
+          "feature_value": 0.0
+        },
+        {
+          "rank": 2,
+          "feature": "F3914",
+          "label": "Binary feature, 0.0% missing; RF importance rank #118",
+          "shap_value": 0.313787,
+          "direction": "+",
+          "feature_value": 0.0
+        },
+        {
+          "rank": 3,
+          "feature": "F435",
+          "label": "Continuous feature, 6.99% missing; RF importance rank #168",
+          "shap_value": 0.313438,
+          "direction": "+",
+          "feature_value": 2.15625
+        },
+        {
+          "rank": 4,
+          "feature": "F625",
+          "label": "Continuous feature, 0.18% missing; RF importance rank #162",
+          "shap_value": 0.297207,
+          "direction": "+",
+          "feature_value": -0.03459
+        },
+        {
+          "rank": 5,
+          "feature": "F3750",
+          "label": "Continuous feature, 0.02% missing; RF importance rank #25",
+          "shap_value": -0.19833,
+          "direction": "-",
+          "feature_value": -0.510917
+        }
+      ],
+      "analysis": "Account A8574 is a false positive (actual: normal, predicted band: Monitor). ML score is 0.0 (near zero), indicating the ML model correctly identified this as non-mule. The alert was triggered by the behavioral anomaly LOF percentile of 100.0 (with +10 boost applied), which pushed the fused score above the Normal threshold."
+    },
+    "A1097": {
+      "account_id": "A1097",
+      "risk_score": 33.36,
+      "risk_band": "Monitor",
+      "ml_score": 0.0,
+      "stat_score": 34.27,
+      "behavior_score": 99.67,
+      "boost_applied": true,
+      "primary_false_alert_driver": "Behavioral Anomaly (LOF boost)",
+      "top_shap_contributors": [
+        {
+          "rank": 1,
+          "feature": "F886",
+          "label": "Binary feature, 0.02% missing; RF importance rank #1083",
+          "shap_value": 0.69546,
+          "direction": "+",
+          "feature_value": 1.0
+        },
+        {
+          "rank": 2,
+          "feature": "F3898",
+          "label": "Continuous feature, 0.0% missing; RF importance rank #6",
+          "shap_value": -0.457804,
+          "direction": "-",
+          "feature_value": 0.0
+        },
+        {
+          "rank": 3,
+          "feature": "F3801",
+          "label": "Continuous feature, 0.0% missing; RF importance rank #1",
+          "shap_value": 0.370126,
+          "direction": "+",
+          "feature_value": -0.2792
+        },
+        {
+          "rank": 4,
+          "feature": "F1704",
+          "label": "Continuous feature, 0.08% missing; RF importance rank #105",
+          "shap_value": -0.221273,
+          "direction": "-",
+          "feature_value": -0.491228
+        },
+        {
+          "rank": 5,
+          "feature": "F1922",
+          "label": "Continuous feature, 0.14% missing; RF importance rank #5",
+          "shap_value": -0.217485,
+          "direction": "-",
+          "feature_value": 3.173199
+        }
+      ],
+      "analysis": "Account A1097 is a false positive (actual: normal, predicted band: Monitor). ML score is 0.0 (near zero), indicating the ML model correctly identified this as non-mule. The alert was triggered by the behavioral anomaly LOF percentile of 99.67 (with +10 boost applied), which pushed the fused score above the Normal threshold."
+    },
+    "A7543": {
+      "account_id": "A7543",
+      "risk_score": 30.76,
+      "risk_band": "Monitor",
+      "ml_score": 0.02,
+      "stat_score": 8.02,
+      "behavior_score": 99.72,
+      "boost_applied": true,
+      "primary_false_alert_driver": "Behavioral Anomaly (LOF boost)",
+      "top_shap_contributors": [
+        {
+          "rank": 1,
+          "feature": "F3914",
+          "label": "Binary feature, 0.0% missing; RF importance rank #118",
+          "shap_value": -0.882214,
+          "direction": "-",
+          "feature_value": 1.0
+        },
+        {
+          "rank": 2,
+          "feature": "F3898",
+          "label": "Continuous feature, 0.0% missing; RF importance rank #6",
+          "shap_value": 0.722725,
+          "direction": "+",
+          "feature_value": -1.0
+        },
+        {
+          "rank": 3,
+          "feature": "F270",
+          "label": "Continuous feature, 35.99% missing; RF importance rank #40",
+          "shap_value": 0.480732,
+          "direction": "+",
+          "feature_value": 0.875
+        },
+        {
+          "rank": 4,
+          "feature": "F2453",
+          "label": "Continuous feature, 8.36% missing; RF importance rank #45",
+          "shap_value": 0.393657,
+          "direction": "+",
+          "feature_value": -0.621005
+        },
+        {
+          "rank": 5,
+          "feature": "F3750",
+          "label": "Continuous feature, 0.02% missing; RF importance rank #25",
+          "shap_value": 0.375293,
+          "direction": "+",
+          "feature_value": 0.270742
+        }
+      ],
+      "analysis": "Account A7543 is a false positive (actual: normal, predicted band: Monitor). ML score is 0.02 (near zero), indicating the ML model correctly identified this as non-mule. The alert was triggered by the behavioral anomaly LOF percentile of 99.72 (with +10 boost applied), which pushed the fused score above the Normal threshold."
+    },
+    "A4840": {
+      "account_id": "A4840",
+      "risk_score": 32.27,
+      "risk_band": "Monitor",
+      "ml_score": 0.0,
+      "stat_score": 23.81,
+      "behavior_score": 99.45,
+      "boost_applied": true,
+      "primary_false_alert_driver": "Behavioral Anomaly (LOF boost)",
+      "top_shap_contributors": [
+        {
+          "rank": 1,
+          "feature": "F3898",
+          "label": "Continuous feature, 0.0% missing; RF importance rank #6",
+          "shap_value": 0.77009,
+          "direction": "+",
+          "feature_value": -1.0
+        },
+        {
+          "rank": 2,
+          "feature": "F949",
+          "label": "Continuous feature, 0.18% missing; RF importance rank #4",
+          "shap_value": 0.660759,
+          "direction": "+",
+          "feature_value": -0.255895
+        },
+        {
+          "rank": 3,
+          "feature": "F3801",
+          "label": "Continuous feature, 0.0% missing; RF importance rank #1",
+          "shap_value": 0.605679,
+          "direction": "+",
+          "feature_value": -0.304393
+        },
+        {
+          "rank": 4,
+          "feature": "F3914",
+          "label": "Binary feature, 0.0% missing; RF importance rank #118",
+          "shap_value": -0.332536,
+          "direction": "-",
+          "feature_value": 1.0
+        },
+        {
+          "rank": 5,
+          "feature": "F1922",
+          "label": "Continuous feature, 0.14% missing; RF importance rank #5",
+          "shap_value": 0.326909,
+          "direction": "+",
+          "feature_value": -0.193197
+        }
+      ],
+      "analysis": "Account A4840 is a false positive (actual: normal, predicted band: Monitor). ML score is 0.0 (near zero), indicating the ML model correctly identified this as non-mule. The alert was triggered by the behavioral anomaly LOF percentile of 99.45 (with +10 boost applied), which pushed the fused score above the Normal threshold."
+    }
+  },
+  "false_negatives": {
+    "A9047": {
+      "account_id": "A9047",
+      "risk_score": 13.37,
+      "risk_band": "Normal",
+      "ml_score": 0.01,
+      "stat_score": 22.51,
+      "behavior_score": 55.59,
+      "top_risk_increasing_features": [
+        {
+          "rank": 1,
+          "feature": "F3898",
+          "label": "Continuous feature, 0.0% missing; RF importance rank #6",
+          "shap_value": 0.749808,
+          "feature_value": -1.0
+        },
+        {
+          "rank": 2,
+          "feature": "F1863",
+          "label": "Continuous feature, 0.04% missing; RF importance rank #12",
+          "shap_value": 0.365702,
+          "feature_value": -0.288078
+        },
+        {
+          "rank": 3,
+          "feature": "F625",
+          "label": "Continuous feature, 0.18% missing; RF importance rank #162",
+          "shap_value": 0.233946,
+          "feature_value": -0.017295
+        },
+        {
+          "rank": 4,
+          "feature": "F3484",
+          "label": "Continuous feature, 0.09% missing; RF importance rank #65",
+          "shap_value": 0.231474,
+          "feature_value": 0.666667
+        },
+        {
+          "rank": 5,
+          "feature": "F2449",
+          "label": "Continuous feature, 14.36% missing; RF importance rank #66",
+          "shap_value": 0.206698,
+          "feature_value": -1.265193
+        }
+      ],
+      "top_risk_reducing_features": [
+        {
+          "rank": 1,
+          "feature": "F3914",
+          "label": "Binary feature, 0.0% missing; RF importance rank #118",
+          "shap_value": -0.5637,
+          "feature_value": 1.0
+        },
+        {
+          "rank": 2,
+          "feature": "F3750",
+          "label": "Continuous feature, 0.02% missing; RF importance rank #25",
+          "shap_value": -0.20939,
+          "feature_value": -0.510917
+        },
+        {
+          "rank": 3,
+          "feature": "F996",
+          "label": "Binary feature, 0.18% missing; RF importance rank #56",
+          "shap_value": -0.20249,
+          "feature_value": 0.0
+        },
+        {
+          "rank": 4,
+          "feature": "F999",
+          "label": "Continuous feature, 0.18% missing; RF importance rank #37",
+          "shap_value": -0.144954,
+          "feature_value": -0.32
+        },
+        {
+          "rank": 5,
+          "feature": "F1753",
+          "label": "Continuous feature, 0.08% missing; RF importance rank #52",
+          "shap_value": -0.141067,
+          "feature_value": 1.396912
+        }
+      ],
+      "analysis": "Account A9047 is a FALSE NEGATIVE — an actual money mule that was classified in the Normal risk band (score: 13.37). ML score: 0.01, Stat score: 22.51, Behavior score: 55.59. All three scoring pillars assigned low scores. The ML model was unable to detect this mule because the top risk-reducing SHAP features dominated the prediction. This account may represent a sophisticated mule pattern not captured by the current feature set."
+    },
+    "A9076": {
+      "account_id": "A9076",
+      "risk_score": 2.71,
+      "risk_band": "Normal",
+      "ml_score": 1.4,
+      "stat_score": 0.0,
+      "behavior_score": 8.64,
+      "top_risk_increasing_features": [
+        {
+          "rank": 1,
+          "feature": "F3898",
+          "label": "Continuous feature, 0.0% missing; RF importance rank #6",
+          "shap_value": 1.207672,
+          "feature_value": -1.0
+        },
+        {
+          "rank": 2,
+          "feature": "F3908",
+          "label": "Binary feature, 0.0% missing; RF importance rank #39",
+          "shap_value": 0.704614,
+          "feature_value": 1.0
+        },
+        {
+          "rank": 3,
+          "feature": "F3750",
+          "label": "Continuous feature, 0.02% missing; RF importance rank #25",
+          "shap_value": 0.462033,
+          "feature_value": 0.746725
+        },
+        {
+          "rank": 4,
+          "feature": "F3484",
+          "label": "Continuous feature, 0.09% missing; RF importance rank #65",
+          "shap_value": 0.417374,
+          "feature_value": 0.666667
+        },
+        {
+          "rank": 5,
+          "feature": "F1166",
+          "label": "Continuous feature, 0.02% missing; RF importance rank #14",
+          "shap_value": 0.407561,
+          "feature_value": -0.20155
+        }
+      ],
+      "top_risk_reducing_features": [
+        {
+          "rank": 1,
+          "feature": "F3914",
+          "label": "Binary feature, 0.0% missing; RF importance rank #118",
+          "shap_value": -0.889194,
+          "feature_value": 1.0
+        },
+        {
+          "rank": 2,
+          "feature": "F1863",
+          "label": "Continuous feature, 0.04% missing; RF importance rank #12",
+          "shap_value": -0.311425,
+          "feature_value": 0.308401
+        },
+        {
+          "rank": 3,
+          "feature": "F3913",
+          "label": "Binary feature, 0.0% missing; RF importance rank #93",
+          "shap_value": -0.21439,
+          "feature_value": 1.0
+        },
+        {
+          "rank": 4,
+          "feature": "F625",
+          "label": "Continuous feature, 0.18% missing; RF importance rank #162",
+          "shap_value": -0.145736,
+          "feature_value": 0.830163
+        },
+        {
+          "rank": 5,
+          "feature": "F3753",
+          "label": "Continuous feature, 0.02% missing; RF importance rank #68",
+          "shap_value": -0.120346,
+          "feature_value": 0.595238
+        }
+      ],
+      "analysis": "Account A9076 is a FALSE NEGATIVE — an actual money mule that was classified in the Normal risk band (score: 2.71). ML score: 1.4, Stat score: 0.0, Behavior score: 8.64. All three scoring pillars assigned low scores. The ML model was unable to detect this mule because the top risk-reducing SHAP features dominated the prediction. This account may represent a sophisticated mule pattern not captured by the current feature set."
+    }
+  },
+  "metadata": {
+    "total_flagged": 32,
+    "total_false_positives": 18,
+    "total_false_negatives": 2,
+    "fp_lof_boost_driven": 18,
+    "test_set_avg_stat_score": 24.12
+  }
+}

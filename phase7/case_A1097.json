@@ -1,0 +1,42 @@
+{
+  "account_id": "A1097",
+  "risk_score": 33.36,
+  "risk_band": "Monitor",
+  "top_features": [
+    {
+      "feature": "F886",
+      "label": "Binary feature, 0.02% missing; RF importance rank #1083",
+      "value": 1.0,
+      "shap_value": 0.69546
+    },
+    {
+      "feature": "F3898",
+      "label": "Continuous feature, 0.0% missing; RF importance rank #6",
+      "value": 0.0,
+      "shap_value": -0.457804
+    },
+    {
+      "feature": "F3801",
+      "label": "Continuous feature, 0.0% missing; RF importance rank #1",
+      "value": -0.2792,
+      "shap_value": 0.370126
+    },
+    {
+      "feature": "F1704",
+      "label": "Continuous feature, 0.08% missing; RF importance rank #105",
+      "value": -0.491228,
+      "shap_value": -0.221273
+    },
+    {
+      "feature": "F1922",
+      "label": "Continuous feature, 0.14% missing; RF importance rank #5",
+      "value": 3.173199,
+      "shap_value": -0.217485
+    }
+  ],
+  "shap_explanation": "Account A1097 — MONITOR (risk score: 33.36)\n\nML Component (weight: 70%): ML score = 0.0. Weighted contribution = 0.0.\n  ML model assigned near-zero probability. SHAP contributions are minimal.",
+  "genai_summary": "### 1. Investigation Summary\nThis account has been flagged in the MONITOR band with a unified risk score of 33.36. The unified risk assessment was compiled by fusing the supervised predictive model (ML), general ledger statistical deviations, and behavioral outlier indicators. The primary driver of this alert is the unsupervised behavioral anomaly detector.\n\n### 2. Reasons for Suspicion\n- Unsupervised Anomaly Highlight: The supervised classifier assigned a low probability (0.00/100), but the unsupervised detectors flagged extreme outliers. This profile represents a potential novel or sophisticated evasion pattern not covered by historical training data.\n- Statistical Anomaly Status: The general statistical anomaly score is 34.27/100 (compared to the test-set average of 24.12), indicating an above-average level of feature variance deviations.\n- Behavioral Outlier Status: The Local Outlier Factor (LOF) percentile is 99.67/100. Account is in the top 1% of behavioral outliers on the ledger (with +10.0 boost applied).\n\n### 3. Recommended Actions\nIn accordance with Bank of India compliance policies, the recommended action for the MONITOR band is: Enhanced monitoring. Investigators should perform standard verification check-lists, including: \n- Auditing occupation metadata (verify retail account consistency).\n- Inspecting the ledger for rapid in-and-out cash velocity patterns (pass-through checking).\n- Cross-referencing current observation dates and transaction records against historical profiles.\n\n### 4. Investigation Priority\nBased on the priority queue ranking, this case has been assigned to the flagged queue. Investigators must review cases sequentially starting from the Critical queue to optimize operational resources.",
+  "recommended_action": "Enhanced monitoring",
+  "priority_score": 46.62,
+  "priority_rank": 14
+}

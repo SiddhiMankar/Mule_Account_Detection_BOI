@@ -1,0 +1,22 @@
+{
+    "total_accounts": 1817,
+    "total_mules": 16,
+    "critical_count": 5,
+    "critical_precision": 1.0,
+    "captured_mules": 10,
+    "fraud_capture_rate": 0.625,
+    "alert_volume": 32,
+    "alert_rate_pct": 1.7611447440836543,
+    "risk_band_counts": {
+        "Normal": 1785,
+        "Monitor": 22,
+        "Critical": 5,
+        "High Risk": 5
+    },
+    "mules_by_risk_band": {
+        "Critical": 5,
+        "High Risk": 5,
+        "Monitor": 4,
+        "Normal": 2
+    }
+}

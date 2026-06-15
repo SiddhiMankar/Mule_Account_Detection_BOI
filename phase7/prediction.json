@@ -1,0 +1,81 @@
+{
+  "account_id": "TEST0000",
+  "predicted_class": 0,
+  "ml_probability": 1.4e-05,
+  "risk_score": 9.28,
+  "prediction": "Normal",
+  "risk_band": "Normal",
+  "recommended_action": "No action",
+  "top_features": [
+    "F886",
+    "F949",
+    "F3914",
+    "F2686",
+    "F625"
+  ],
+  "top_positive_contributors": [
+    {
+      "feature": "F886",
+      "label": "Binary feature, 0.02% missing; RF importance rank #1083",
+      "feature_value": 1.0,
+      "shap_value": 0.684428
+    },
+    {
+      "feature": "F949",
+      "label": "Continuous feature, 0.18% missing; RF importance rank #4",
+      "feature_value": -0.265034,
+      "shap_value": 0.257619
+    },
+    {
+      "feature": "F3914",
+      "label": "Binary feature, 0.0% missing; RF importance rank #118",
+      "feature_value": 0.0,
+      "shap_value": 0.249964
+    },
+    {
+      "feature": "F2686",
+      "label": "Continuous feature, 36.25% missing; RF importance rank #213",
+      "feature_value": 1.416667,
+      "shap_value": 0.20848
+    },
+    {
+      "feature": "F625",
+      "label": "Continuous feature, 0.18% missing; RF importance rank #162",
+      "feature_value": -0.017295,
+      "shap_value": 0.169223
+    }
+  ],
+  "top_negative_contributors": [
+    {
+      "feature": "F3898",
+      "label": "Continuous feature, 0.0% missing; RF importance rank #6",
+      "feature_value": 0.0,
+      "shap_value": -0.658618
+    },
+    {
+      "feature": "F3913",
+      "label": "Binary feature, 0.0% missing; RF importance rank #93",
+      "feature_value": 1.0,
+      "shap_value": -0.229412
+    },
+    {
+      "feature": "F3807",
+      "label": "Continuous feature, 0.0% missing; RF importance rank #2",
+      "feature_value": 1.373301,
+      "shap_value": -0.22562
+    },
+    {
+      "feature": "F3801",
+      "label": "Continuous feature, 0.0% missing; RF importance rank #1",
+      "feature_value": 0.816495,
+      "shap_value": -0.183691
+    },
+    {
+      "feature": "F3804",
+      "label": "Continuous feature, 0.0% missing; RF importance rank #46",
+      "feature_value": -0.490909,
+      "shap_value": -0.143695
+    }
+  ],
+  "report": "No significant mule-account risk indicators detected."
+}

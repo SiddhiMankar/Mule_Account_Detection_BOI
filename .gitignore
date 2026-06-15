@@ -1,0 +1,30 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+
+# IDE settings
+.vscode/
+.idea/
+
+# Project Data and Model Artifacts
+*.xlsx
+*.csv
+*.pkl
+*.npy
+*.pdf
+*.png
+*.zip
+
+# Ignore local run logs and OS files
+*.log
+.DS_Store
+Thumbs.db
