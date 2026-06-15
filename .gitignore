@@ -1,30 +1,43 @@
-# Byte-compiled / optimized / DLL files
+# ── Python ──────────────────────────────────────────────────────────────────
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
 
-# Environments
+# ── Environments ─────────────────────────────────────────────────────────────
 .env
 .venv
 env/
 venv/
 ENV/
 
-# IDE settings
+# ── IDE / OS ──────────────────────────────────────────────────────────────────
 .vscode/
 .idea/
+.DS_Store
+Thumbs.db
 
-# Project Data and Model Artifacts
+# ── Large data & model artifacts ─────────────────────────────────────────────
 *.xlsx
 *.csv
 *.pkl
 *.npy
-*.pdf
-*.png
 *.zip
 
-# Ignore local run logs and OS files
+# ── Logs ─────────────────────────────────────────────────────────────────────
 *.log
-.DS_Store
-Thumbs.db
+
+# ── Binary outputs (PDFs, images) ────────────────────────────────────────────
+# Exclude all PNGs and PDFs by default …
+*.png
+*.pdf
+
+# … but allow the README screenshot folder explicitly
+!images_for_readme/
+!images_for_readme/**
+
+# ── Scratch / temp files ─────────────────────────────────────────────────────
+scratch/
+
+# ── Streamlit cache ───────────────────────────────────────────────────────────
+.streamlit/

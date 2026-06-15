@@ -4,14 +4,14 @@ An end-to-end, multi-layered fraud intelligence system designed to identify, ris
 
 ---
 
-## 1. Project Overview
-- **Problem Statement**: Money mules are a critical node in financial crime networks. Rule-based transaction monitoring systems are easily bypassed, suffer from extremely high false-positive rates, and fail to detect novel, complex, or slow-brewing mule patterns.
-- **Objective**: Detect suspicious accounts by combining supervised predictive accuracy with unsupervised anomaly detection (to capture unseen evasion tactics) while providing full, human-understandable audit trails (SHAP explainability) and automated narrative summaries (GenAI).
-- **End Goal**: Rather than outputting a simple binary classifier (0/1), this system functions as an operational **Fraud Risk Engine & Investigation Dossier Generator**, prioritizing alerts sequentially and equipping fraud analysts with ready-to-use case briefs.
+## Project Overview
+Money mules are a critical node in financial crime networks. Rule-based transaction monitoring systems are easily bypassed, suffer from extremely high false-positive rates, and fail to detect novel, complex, or slow-brewing mule patterns.
+
+This system functions as an operational **Fraud Risk Engine & Investigation Dossier Generator**, prioritizing alerts sequentially and equipping fraud analysts with ready-to-use case briefs. It balances predictive accuracy on historical patterns with unsupervised anomaly detection (to capture unseen evasion tactics) while providing full, human-understandable audit trails and automated compliance-safe narratives.
 
 ---
 
-## 2. System Architecture
+## System Architecture
 
 The end-to-end detection pipeline is structured as follows:
 
@@ -32,238 +32,167 @@ flowchart TD
     K --> L[Investigation Queue - Markdown/HTML/PDF Reports]
 ```
 
-1. **Data Ingestion**: Standardizes bank-provided ledger transactions.
-2. **Feature Engineering**: Imputes missing values, scales features, removes temporal leakage, and builds custom behavioral indices.
-3. **Model Training (Classification)**: Trains a supervised LightGBM model to identify historical fraud patterns.
-4. **Anomaly Detection Layer**: Captures statistical anomalies (via Isolation Forest) and behavioral outlier patterns (via Local Outlier Factor).
-5. **Risk Scoring Engine**: Fuses ML probability, statistical anomaly, and behavioral anomaly scores into a single unified risk score.
-6. **Explainability (SHAP)**: Computes local and global feature attributions to provide transparent reasons for suspicion.
-7. **GenAI Report Generation**: Integrates the Gemini API (with deterministic fallback) to generate narrative investigator case dockets.
-8. **Dashboard Output System**: Exports formatted Markdown, HTML, and paginated PDF dossiers for case management systems (CMS).
+## Dashboard UI 
+
+The analyst dashboard runs locally via Streamlit and ships with four purpose-built views. The interface follows a minimalist Notion-style design: white background, Inter typography, no emojis, clean borders, and semantic colour accents only where needed.
+
+### Investigation Queue (Tab 1)
+Prioritised alert queue with stat summary cards, risk-band filtering, and account search.
+
+![Investigation Queue](images_for_readme/tab1_queue.png)
+
+### Forensic Profiler (Tab 2)
+Per-account scoring gauges (Fused Risk, ML Probability, Stat Anomaly, Behavioral), demographic profile table, SHAP attribution chart, and AI-generated investigation brief.
+
+![Forensic Profiler](images_for_readme/tab2_profiler.png)
+
+### Sandbox Tester (Tab 3)
+Select a pre-compiled demo account and inspect all model score outputs alongside the compliance narrative dossier.
+
+![Sandbox Tester](images_for_readme/tab3_sandbox.png)
+
+### Model Metrics (Tab 4)
+Cross-validation performance table, grouped bar chart comparing F1, PR-AUC, and Recall, plus simulated ROC, Precision-Recall, and Confusion Matrix curves.
+
+![Model Metrics](images_for_readme/tab4_metrics.png)
 
 ---
 
-## 3. Dataset Description
-- **Source**: Bank-provided transactional and account profile datasets.
-- **Size**: **9,082 rows** × **3,924 features** (including demographic indicators, ledger activities, and transaction history).
-- **Target Variable**: `F3924` (1 for identified Money Mule, 0 for Normal Account).
-- **Class Imbalance**: Highly imbalanced dataset (**81 mule accounts, 9,001 normal accounts | ratio ~111:1**). Primary metrics are Recall, Precision, PR-AUC, and Cost.
-- **Key Feature Groups**:
-  - **Demographics & Profile**: Occupation, area/category, customer segment, account type.
-  - **Transaction Ledger**: Credit/debit velocities, balance volumes, monthly averages.
-  - **Behavioral Ratios**: Credit-to-debit ratios, balance-retention coefficients, pass-through velocities.
+## In-Depth: Data Preprocessing Pipeline
+
+Handling a large-scale bank dataset with 3,924 features requires rigorous data engineering. The preprocessing pipeline is fully encapsulated in [mule_preprocessor.py](phase2/mule_preprocessor.py) and [preprocess_pipeline.py](phase2/preprocess_pipeline.py), performing the following sequential operations:
+
+1. **Anti-Leakage Shuffling**: The raw dataset was found to be sorted with normal accounts at the top and mule accounts at the bottom, creating a major index row-order leakage (`Unnamed: 0` correlation ~0.163). The pipeline shuffles the dataset with a fixed seed before any data split.
+2. **Temporal Leakage Removal**: Removed target leakage columns:
+   - `F3912` (highly correlated correlation proxy, 0.969 correlation to target).
+   - `F2230` (observation dates mapping perfectly to targets, revealing observation time gaps).
+3. **Behavioral Feature Engineering**:
+   - Parsed `F3888` (Account Opening Date) using mixed-date format parsing.
+   - Engineered `account_age_days` and `account_age_years` relative to a fixed baseline date `2025-12-31`.
+4. **Missing Value Imputation**:
+   - Dropped columns with $>40\%$ missingness (1,084 features).
+   - For remaining features: Continuous variables are imputed using their **median**, while binary/categorical columns are imputed using their **most frequent** values.
+5. **Continuous Scaling**: Applied `RobustScaler` on continuous variables to handle features with extreme variance and outliers ($>550$ features had max values exceeding 1,000,000).
+6. **Categorical Encoding**: One-hot encoded categorical columns (`F3886`, `F3889`, `F3890`, `F3891`, `F3892`, `F3893`) into lowercase snake_case variables.
+7. **Redundancy Filtering**: Dropped **1,214 redundant features** that had a mutual correlation coefficient of $>0.95$, selecting the feature with the higher target correlation to prevent multicollinearity.
+8. **Feature Selection via Mutual Information**: Computed Mutual Information (MI) and Random Forest importance scores for the remaining features. Stratified cross-validation identified that selecting the **top 300 features** based on MI yielded the highest validation F1-score (0.6087).
 
 ---
 
-## 4. Phase 1 – Data Understanding
-- **Dataset Audit**: Audited missing values (30% of features were sparse with >40% missingness) and confirmed 0 duplicate rows.
-- **Target Analysis**: Established baseline prevalence (0.89%) to guide model selection and thresholding.
-- **Feature Categorization**: Categorized the 3,924 columns into 526 binary features, 381 categorical features, and 2,657 continuous features.
-- **Outlier Audits**: Identified 551 features with extreme variances (>1,000,000 max values), necessitating Robust/Standard scaling.
+## In-Depth: Model Training & Evaluation
+
+The supervised classification model targets historical mule account patterns. The training process is structured as follows:
+
+### Cross-Validation Setup
+- **Train/Test Split**: 80/20 Stratified Split to preserve the 0.89% baseline mule prevalence (7,265 rows / 65 mules in Train; 1,817 rows / 16 mules in Test).
+- **CV Strategy**: 5-Fold Stratified Cross-Validation on the training set to prevent leakage.
+
+### Baseline Model Performance (5-Fold CV)
+Four models were trained and evaluated on their cross-validation performance:
+
+| Model | CV Precision | CV Recall | CV F1-Score | CV ROC-AUC | CV PR-AUC |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| **XGBoost** | 0.9548 | **0.7538** | **0.8324** | 0.9759 | 0.8650 |
+| **LightGBM** | 0.9500 | 0.6154 | 0.7281 | 0.9658 | 0.8074 |
+| **Random Forest** | **1.0000** | 0.3692 | 0.5329 | **0.9708** | **0.8233** |
+| **Logistic Regression** | 0.0159 | 0.1538 | 0.0288 | 0.6841 | 0.0206 |
+
+### Tuned Models & Decision Threshold Optimization
+We selected **XGBoost** and **LightGBM** for randomized search hyperparameter tuning. To optimize the final decision boundary, we minimized a custom bank business cost function:
+$$\text{Cost} = (10 \times \text{False Negatives}) + (1 \times \text{False Positives})$$
+
+- **XGBoost Tuned**: Best cost of **45** at threshold **0.60** (4 False Negatives, 5 False Positives).
+- **LightGBM Tuned**: Best cost of **30** at threshold **0.40** (3 False Negatives, 0 False Positives).
+
+**LightGBM (Tuned)** at a threshold of **0.40** was selected as our core classifier:
+- **Test Precision**: **100.00%**
+- **Test Recall**: **81.25%**
+- **Test ROC-AUC**: **0.9820**
+- **Test PR-AUC**: **0.8689**
 
 ---
 
-## 5. Phase 2 – Feature Engineering & Reduction
-- **Temporal Leakage Removal**: Removed target leakage columns:
-  - `F3912` (highly correlated correlation proxy, 0.969).
-  - `F2230` (observation dates mapping perfectly to targets).
-  - Row order leakage (`Unnamed: 0` index sorted normal vs. mule). Shuffled rows.
-- **Dimensionality Reduction**:
-  - Dropped constant features (zero-variance).
-  - Dropped sparse columns (>40% missingness).
-  - Dropped highly correlated duplicate pairs (e.g. `F2506`/`F2507`).
-  - Applied **Mutual Information (MI)** feature screening to select the **top 300 features** for model training.
+## Anomaly Detection & Score Fusion
+
+Unsupervised layers act as a safety net against zero-day evasion tactics (suspicious behavior not represented in historical training data).
+
+1. **Statistical Anomaly Layer (Isolation Forest)**: Trains on normal training accounts. Outputs a normalized statistical outlier score ($0-100$).
+2. **Behavioral Outlier Layer (LOF)**: Fits a Local Outlier Factor model (configured with `novelty=True` for out-of-sample inference) on 10 engineered behavioral features (e.g., credit-to-debit ratio, balance-retention coefficients, pass-through velocities).
+3. **Unified Risk Fusion**: Combines all three layers into a single Fused Risk Score:
+   $$\text{Fused Risk Score} = 0.70 \times \text{ML Probability} + 0.10 \times \text{Stat Anomaly Score} + 0.20 \times \text{Behavioral Anomaly Score}$$
+4. **Behavioral Boost**: Accounts ranking in the top 1% of behavioral outliers (percentile $\ge 99.0$) receive a **`+10.0` score boost** (capped at 100), enabling the engine to escalate accounts that LightGBM completely missed (recovering 33.33% of false negatives in holdout testing).
+
+### Risk Bands & Actions
+- **Normal (0–30)**: No action.
+- **Monitor (31–60)**: Enhanced monitoring.
+- **High Risk (61–80)**: Manual fraud investigation.
+- **Critical (81–100)**: Immediate review and account restrictions (achieved 100% precision in test validation).
 
 ---
 
-## 6. Phase 3 – Model Development
-- **Supervised Models Evaluated**:
-  - Logistic Regression (Baseline)
-  - Random Forest
-  - XGBoost (using `scale_pos_weight` to address imbalance)
-  - LightGBM (Tuned)
-- **Tuning Strategy**: 5-fold Stratified Cross-Validation on the training set, optimizing for Recall and PR-AUC.
-- **Performance Evaluation Matrix (Test Set)**:
-  
-  | Model | Test Recall | Test Precision | Test F1-Score | Test ROC-AUC | Test PR-AUC | FN Count | Cost (10×FN + FP) |
-  | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-  | **LightGBM** | **81.25%** | **100.00%** | **0.8966** | **0.9820** | **0.8689** | **3** | **30** |
-  | XGBoost | 75.00% | 70.59% | 0.7273 | 0.9769 | 0.7909 | 4 | 45 |
+## Explainability (SHAP) & GenAI Reporting
 
-- **Decision Rule**: Threshold optimized at **`0.40`** to minimize false negatives while maintaining high precision.
+- **Local Explanations**: Computes local SHAP values using `shap.TreeExplainer` for flagged cases.
+- **Verified Dictionary Mapping**: Translates raw feature codes into clean, non-speculative operational terms (e.g., categorizing occupations, locations, or account types).
+- **Copilot Narrative Dossier**: Integrates the Gemini API (with a robust rule-based local template fallback) to write case narratives detailing risk scores, anomaly metrics, and key SHAP drivers.
+- **Exporting CMS Reports**: Outputs standard JSON cases, interactive HTML reports, and professional paginated PDFs (built via ReportLab) for compliance tracking.
 
 ---
 
-## 7. Phase 4 & 4B – Anomaly Detection Layers
-Unsupervised anomaly detection captures suspicious accounts that do not conform to historical training data (protecting against zero-day evasion tactics).
+## Project MVP Roadmap
 
-1. **Statistical Anomaly (Phase 4)**:
-   - **Model**: Isolation Forest trained on normal training accounts.
-   - **Score**: Scaled using a fitted MinMaxScaler [isolation_forest_scaler.pkl](file:///c:/Projects/bank_of_India/mule_account_detection/phase4/isolation_forest_scaler.pkl) to output a business-friendly score (0–100).
-2. **Behavioral Outlier (Phase 4B)**:
-   - **Model**: Local Outlier Factor (LOF) fit on engineered behavioral features (Account Age, occupation/area risk, credit/debit ratio, balance-retention, and pass-through ratios).
-   - **LOF Compatibility**: Trained with `novelty=True` to support out-of-sample scoring on new transaction streams.
+Below is the status of MVP goals and upcoming milestones.
 
----
+### Completed Milestones
+- **[x] Data Audit & EDA**: Categorized continuous/categorical variables and identified key leakage vectors.
+- **[x] Data Preprocessing Pipeline**: Built modular imputation, scaling, and redundancy-removal processes.
+- **[x] Supervised Model Tuning**: Tuned and optimized LightGBM to minimize custom financial business cost.
+- **[x] Hybrid Risk Engine**: Fused supervised probabilities with Isolation Forest and LOF anomaly scores.
+- **[x] Explainer Engine**: Configured local SHAP explanation cards mapped to a verified feature dictionary.
+- **[x] Document Generator**: Configured automated markdown, HTML, and ReportLab PDF case dossiers.
+- **[x] Path-Agnostic Setup**: Restructured the codebase with dynamic path managers (`config/paths.py`).
+- **[x] Analyst Web Dashboard**: Delivered a Streamlit dashboard with four-tab layout — Investigation Queue, Forensic Profiler, Sandbox Tester, and Model Metrics. Redesigned with a Notion-style light theme (Inter font, white background, semantic status indicators, SHAP waterfall charts, and compliance narrative viewer). Supports both dynamic inference (when pickles are present) and static review mode (from pre-computed JSON cards).
 
-## 8. Phase 5 – Risk Scoring Engine
-The risk engine fuses supervised and unsupervised layers:
-
-$$\text{Fused Risk Score} = 0.70 \times \text{ML Probability} + 0.10 \times \text{Stat Anomaly Score} + 0.20 \times \text{Behavioral Anomaly Score}$$
-
-- **Outlier Boosting**: Fused scores receive a **`+10.0` boost** if the account is in the top 1% of behavioral outliers (percentile $\ge 99.0$), capped at 100.
-- **Risk Bands & Actions**:
-  - **Normal (0–30)**: *No action*
-  - **Monitor (31–60)**: *Enhanced monitoring*
-  - **High Risk (61–80)**: *Manual fraud investigation*
-  - **Critical (81–100)**: *Immediate escalation for review and restrictions*
+### Upcoming MVP Goals (To Be Completed)
+- **[ ] Graph-Based Ring Detection**: Implement a GNN/NetworkX feature extraction layer to flag clusters of accounts connected by matching demographic fields (e.g., shared phone numbers or addresses).
+- **[ ] Real-Time Prediction API**: Package the unified inference pipeline (`predict_account.py`) into a Dockerized FastAPI endpoint to support low-latency real-time transaction scoring.
+- **[ ] Advanced Anomaly Autoencoder**: Train a deep learning Autoencoder model to replace or run alongside the Isolation Forest layer for higher dimensional anomaly profiling.
 
 ---
 
-## 9. Phase 6 – Explainable AI (SHAP)
-- **Local Explanations**: Computes SHAP values on-the-fly for flagged accounts using `shap.TreeExplainer`.
-- **Reason Codes**: Extracts the top 5 positive and negative feature drivers and maps them to clean descriptive labels via a verified feature dictionary. This ensures investigators know exactly why the engine flagged an account.
+## Quick Start
 
----
-
-## 10. Phase 7 – GenAI Investigation Assistant
-- **Automated Dossier Dossiers**: Feeds risk scores, anomaly metrics, and SHAP contributors into a structured LLM template.
-- **Compliance & Terminology Rules**:
-  - Never guesses anonymous F-codes (explains them strictly using verified dictionary metadata).
-  - Uses probabilistic language (no direct accusations of fraud).
-- **CMS Document Export**: Exports narrative summaries, reasons for suspicion, and banking actions as individual JSON case files, a consolidated Markdown docket, and a paginated ReportLab PDF investigator dossier.
-
----
-
-## 11. Key System Features
-- **Hybrid Fusion**: Merges classification with statistical/behavioral outliers.
-- **Prioritized Alert Queue**: Ranks flagged cases by priority score:
-  $$\text{Priority Score} = 0.80 \times \text{Fused Risk Score} + 0.20 \times \text{Behavioral Score}$$
-- **Anti-Accusation Compliance**: Validates AI-generated copy to ensure safety.
-- **Explainability-First**: Direct traceback of individual flags to tabular values.
-
----
-
-## 12. Outputs Generated
-
-The pipeline saves final deliverables under `phase7/`:
-- [predictions.csv](file:///c:/Projects/bank_of_India/mule_account_detection/phase7/predictions.csv): Fused results table for batch ingest.
-- [reports.json](file:///c:/Projects/bank_of_India/mule_account_detection/phase7/reports.json): Narrative investigation reports.
-- [investigator_report.pdf](file:///c:/Projects/bank_of_India/mule_account_detection/phase7/investigator_report.pdf): Paginated, formatted PDF docket (via ReportLab).
-- [investigator_report.html](file:///c:/Projects/bank_of_India/mule_account_detection/phase7/investigator_report.html): Responsive web dossier.
-- [investigation_queue.csv](file:///c:/Projects/bank_of_India/mule_account_detection/phase7/investigation_queue.csv): Ranked alert queue.
-- `case_AXXXX.json`: Ingestible case files for case management integrations.
-
----
-
-## 13. Tech Stack
-- **Languages & Utilities**: Python 3.x
-- **Data Engineering**: Pandas, NumPy, OpenPyXL, SciPy
-- **Modeling**: Scikit-Learn (Logistic Regression, Random Forest, Isolation Forest, LOF, MinMaxScaler, RobustScaler), XGBoost, LightGBM
-- **Explainability**: SHAP
-- **Reporting**: ReportLab (PDF), HTML5, Markdown
-- **GenAI Layer**: `google-generativeai` SDK (Gemini API)
-
----
-
-## 14. Steps to Recreate the Entire Pipeline
-
-Follow these steps to set up the environment, recreate the datasets, retrain all models, and run predictions.
-
-### Step 1: Clone and Environment Setup
-Create a Python virtual environment and activate it:
+### 1. Environment Setup
 ```powershell
 # Create environment
 python -m venv env
-
-# Activate environment (Windows PowerShell)
 .\env\Scripts\Activate.ps1
-```
 
-Install the required dependencies:
-```powershell
+# Install requirements
 pip install pandas numpy scikit-learn xgboost lightgbm matplotlib seaborn joblib shap reportlab openpyxl google-generativeai scipy
 ```
 
-*(Optional)* Configure your Gemini API Key if you want to use the GenAI narrative generation layer (if not present, the scripts automatically fall back to a high-quality local rule-based template engine):
+### 2. Configure Gemini API Key (Optional)
 ```powershell
-$env:GEMINI_API_KEY="your-gemini-api-key-here"
+$env:GEMINI_API_KEY="your-gemini-api-key"
 ```
 
-### Step 2: Run the Pipeline in Order
-To ensure proper dependencies (models, scalers, and data indices are built in order), run the following scripts:
+### 3. Run the Pipeline & Start Dashboard
+You can run the entire training pipeline and start the dashboard with a single command:
+```powershell
+python run.py
+```
+This script checks for missing model/scaler pickles. If any are missing, it automatically trains each phase in sequence (provided `DataSet.xlsx` or `dataset.csv` is placed under `phase1/`) and then launches the Streamlit dashboard app. If all artifacts exist, it skips retraining and boots the dashboard immediately.
 
-1. **Rebuild Preprocessing Pipeline & Cleanup (Phase 2)**:
-   This performs cleaning, feature selection, and exports `X_final.csv`, `y_final.csv`, and the preprocessor pickle.
-   ```powershell
-   python phase2/preprocess_pipeline.py
-   ```
 
-2. **Train Classification Models & Optimize Decision Threshold (Phase 3)**:
-   This splits the dataset (80/20 train/test), trains the baseline models, tunes LightGBM/XGBoost, selects the best model, and saves `best_model.pkl` and `best_threshold.json`.
-   ```powershell
-   python phase3/train_model.py
-   ```
+### 4. Execute Batch/Single Prediction
+```powershell
+# Generate 10 calibrated demo profiles
+python phase7/generate_demo_data.py
 
-3. **Train Statistical Anomaly Layer (Phase 4)**:
-   This trains the Isolation Forest on normal training accounts and exports the model and MinMaxScaler.
-   ```powershell
-   python phase4/anomaly_detection.py
-   ```
+# Predict on batch file
+python phase7/predict_account.py --batch demo_accounts.csv
 
-4. **Engineer Behavioral Features & Train LOF Layer (Phase 4B)**:
-   This generates behavioral ratio features, fits the RobustScaler, and trains the LOF classifier (`novelty=True`).
-   ```powershell
-   python phase4b/build_behavior_features.py
-   python phase4b/behavioral_anomaly_detection.py
-   ```
-
-5. **Generate ML risk scores & Calibrate Fused Risk Engine (Phase 5)**:
-   This predicts ML scores on the test set and fuses ML, statistical, and behavioral scores.
-   ```powershell
-   python phase5/generate_ml_scores.py
-   python phase5/generate_risk_scores.py
-   ```
-
-6. **Generate SHAP Explanations & Reason Codes (Phase 6)**:
-   This computes local SHAP values and exports the feature importance cards.
-   ```powershell
-   python phase6/generate_explanations.py
-   ```
-
-7. **Compile GenAI Dossiers & Prioritized Queues (Phase 7)**:
-   This generates investigator dossiers (Markdown, HTML, PDF dockets) and creates individual CMS JSON case files.
-   ```powershell
-   python phase7/generate_genai_reports.py
-   ```
-
-### Step 3: Run Inference Validation Tests
-To verify the inference pipeline's integration and performance on new out-of-sample data, execute the demo tests:
-
-- **Generate Demo Account Profiles**:
-  ```powershell
-  python phase7/generate_demo_data.py
-  ```
-- **Execute Batch Inference Prediction**:
-  Scores the demo accounts, applies fusion, checks alert budgets, and drafts reports.
-  ```powershell
-  python phase7/predict_account.py --batch demo_accounts.csv
-  ```
-- **Execute Single Account Prediction Card**:
-  Pulls account at index 0 and outputs full SHAP details to `prediction.json`.
-  ```powershell
-  python phase7/predict_account.py --account_idx 0
-  ```
-
----
-
-## 15. Business Impact & Future Scope
-- **Business Impact**:
-  - **Early Warning**: Identifies mule accounts before significant fund diversion occurs.
-  - **Prioritized Alerts**: Directs investigations using weighted prioritization, saving valuable time.
-  - **Explainable Decisions**: Translates complex, high-dimensional metrics into plain investigator reason codes.
-  - **Compliance-Ready Documentation**: Generates audit-ready PDF/HTML briefs for regulatory audits.
-- **Future Scope**:
-  - **Graph-Based Fraud Rings**: Incorporate graph-neural network (GNN) features to detect clusters of accounts connected by transfer paths.
-  - **Real-Time Streaming Ingestion**: Deploy as a microservice using FastAPI/Docker with Apache Kafka for real-time transaction scoring.
-  - **Deep Anomaly Models**: Integrate deep unsupervised learning models like Autoencoders or TabNet anomaly detectors.
+# Predict single account at index 0
+python phase7/predict_account.py --account_idx 0
+```
