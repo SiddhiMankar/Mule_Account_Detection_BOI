@@ -1,7 +1,7 @@
 # Mule Account Detection — Progress Report
 
 **Project**: Bank of India — Mule Account Detection  
-**Last Updated**: 2026-06-11  
+**Last Updated**: 2026-06-18  
 
 ---
 
@@ -134,6 +134,7 @@ Analyzed 7 categorical features against the target:
 | `dataset_strategy_document.md`    | Master pre-processing strategy & drop list       |
 | `dropped_columns_log.txt`         | Audit trail of all 800 dropped columns           |
 | `progress.md`                     | This progress summary                            |
+| `README.md`                       | Master project overview & system documentation   |
 
 ### Scripts
 | Script                                | Purpose                                               |
@@ -146,6 +147,8 @@ Analyzed 7 categorical features against the target:
 | `index_leak_check.py`                 | Row-order leakage investigation                       |
 | `leakage_and_missing_investigation.py`| Leakage audit + high-missing + business features      |
 | `leakage_audit_details.py`            | Detailed crosstab for top-correlated features          |
+| `dashboard.py`                        | Streamlit analyst dashboard (Notion theme)            |
+| `run.py`                              | Dynamic setup script and dashboard launcher           |
 
 ### Data Files
 | File                | Shape           | Description                          |
@@ -400,4 +403,31 @@ Analyzed 7 categorical features against the target:
   - [config/paths.py](file:///c:/Projects/bank_of_India/mule_account_detection/config/paths.py) (Dynamic path manager)
   - Retrained model and scaler pickle artifacts across Phase 2, 3, 4, 4b, 5, and 7.
   - Regenerated test set predictions, demo files, and single prediction cards verifying the pipeline.
+
+---
+
+## Phase 9: Analyst Web Dashboard & Unified System Launcher (✅ Completed)
+
+- **Notion-Style Streamlit Dashboard (`dashboard.py`)**:
+  - Implements a light-themed interface featuring Inter typography, semantic alert status indicators, and clean borders.
+  - **Tab 1: Investigation Queue**: Ranks flagged accounts by priority score, offering multi-select risk band filters and keyword search.
+  - **Tab 2: Forensic Profiler**: Displays scoring gauges (Fused Risk, ML Probability, Stat Anomaly, Behavioral Outlier) alongside account demographics, interactive SHAP risk attribution charts, and AI-generated narrative briefs.
+  - **Tab 3: Sandbox Tester**: Supports running live inference (dynamic mode) or viewing pre-compiled narrative briefs (static mode) for calibrated demo accounts.
+  - **Tab 4: Batch Upload**: Supports uploading Excel (.xlsx) or CSV (.csv) spreadsheets, running automatic schema validation, running batch risk scoring (using ML pipeline in dynamic mode or simulated scoring in static mode), displaying scored metrics/summaries, downloading predictions, and seamlessly integrating them into the Investigation Queue/Profiler.
+  - **Tab 5: Model Metrics**: Displays cross-validation comparison metrics, performance charts, and evaluation curves (ROC, Precision-Recall, and Confusion Matrix).
+- **Unified Bootstrapping Launcher (`run.py`)**:
+  - Checks for the presence of required model, scaler, and pipeline files.
+  - Automatically runs the full pipeline training (Phases 2-7) sequentially if any pickles are missing to reconstruct them, then launches the dashboard.
+- **Stability & Hot-Reload Fixes**:
+  - Fixed `ValueError` on index resets by ensuring existing `"rank"` columns are dropped prior to sorting/re-ranking.
+  - Resolved `'NoneType' object has no attribute 'transform'` errors by ensuring model global variables are checked and re-loaded on hot-reload/re-run cycles.
+  - Removed `.head(5)` preview limit to display the entire uploaded spreadsheet in the preview table.
+  - Fixed console crash (`UnicodeEncodeError`) in Windows cmd/PowerShell by converting unicode print emojis to ASCII-safe text tags.
+- **UI Assets (`images_for_readme/`)**:
+  - Maintained key screenshots of each dashboard view to provide visual walkthroughs in documentation.
+- **Deliverables**:
+  - [dashboard.py](file:///c:/Projects/bank_of_India/mule_account_detection/dashboard.py) (Streamlit dashboard application)
+  - [run.py](file:///c:/Projects/bank_of_India/mule_account_detection/run.py) (Bootstrapping script & dashboard launcher)
+  - [images_for_readme/](file:///c:/Projects/bank_of_India/mule_account_detection/images_for_readme) (Visual assets for the dashboard tabs)
+
 

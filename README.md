@@ -51,10 +51,16 @@ Select a pre-compiled demo account and inspect all model score outputs alongside
 
 ![Sandbox Tester](images_for_readme/tab3_sandbox.png)
 
-### Model Metrics (Tab 4)
+### Batch Processing (Tab 4)
+Upload an Excel or CSV file with bank account data, then click "Run Batch Scoring".
+
+![Batch Processing](images_for_readme/tab4a_batch_processing.png)
+![Batch Processing Results](images_for_readme/tab4b_batch_processing.png)
+
+### Model Metrics (Tab 5)
 Cross-validation performance table, grouped bar chart comparing F1, PR-AUC, and Recall, plus simulated ROC, Precision-Recall, and Confusion Matrix curves.
 
-![Model Metrics](images_for_readme/tab4_metrics.png)
+![Model Metrics](images_for_readme/tab5_metrics.png)
 
 ---
 

@@ -18,13 +18,13 @@ def check_artifacts():
     return missing
 
 def main():
-    print("🏦 BOI Fraud Intelligence System Launcher 🏦")
+    print("[BOI] BOI Fraud Intelligence System Launcher")
     print("============================================")
     
     missing_artifacts = check_artifacts()
     
     if missing_artifacts:
-        print(f"⚠️ Found {len(missing_artifacts)} missing model/data artifacts.")
+        print(f"[WARNING] Found {len(missing_artifacts)} missing model/data artifacts.")
         print("Checking for dataset to start pipeline retraining...")
         
         has_xlsx = os.path.exists("phase1/DataSet.xlsx")
@@ -36,11 +36,11 @@ def main():
             has_csv = True
             
         if not has_csv:
-            print("\n❌ Error: Neither phase1/dataset.csv nor phase1/DataSet.xlsx was found.")
+            print("\n[ERROR] Neither phase1/dataset.csv nor phase1/DataSet.xlsx was found.")
             print("Please place the dataset file in the phase1/ directory and try again.")
             sys.exit(1)
             
-        print("\n🚀 Starting pipeline training sequence...")
+        print("\n[LAUNCHING] Starting pipeline training sequence...")
         pipeline_steps = [
             ("Phase 2: Preprocessing & Clean", "phase2/preprocess_pipeline.py"),
             ("Phase 3: Model Training & Tuning", "phase3/train_model.py"),
@@ -54,21 +54,21 @@ def main():
         ]
         
         for name, script in pipeline_steps:
-            print(f"\n▶️ Running {name} ({script})...")
+            print(f"\n[RUNNING] Running {name} ({script})...")
             result = subprocess.run([sys.executable, script])
             if result.returncode != 0:
-                print(f"\n❌ Step failed: {script}. Aborting startup.")
+                print(f"\n[FAIL] Step failed: {script}. Aborting startup.")
                 sys.exit(1)
         
-        print("\n✅ All pipeline stages trained and artifacts saved successfully!")
+        print("\n[SUCCESS] All pipeline stages trained and artifacts saved successfully!")
     else:
-        print("⚡ All model artifacts are up-to-date. Skipping retraining.")
+        print("[INFO] All model artifacts are up-to-date. Skipping retraining.")
         
-    print("\n🖥️ Starting Streamlit Fraud Intelligence Dashboard...")
+    print("\n[DASHBOARD] Starting Streamlit Fraud Intelligence Dashboard...")
     try:
-        subprocess.run(["streamlit", "run", "dashboard.py"])
+        subprocess.run([sys.executable, "-m", "streamlit", "run", "dashboard.py"])
     except KeyboardInterrupt:
-        print("\n👋 Dashboard stopped by user.")
+        print("\n[BYE] Dashboard stopped by user.")
 
 if __name__ == "__main__":
     main()

@@ -273,6 +273,8 @@ if "static" in mode_status:
 else:
     STATIC_MODE = False
     import phase7.predict_account as pa
+    if pa.PREPROCESSOR is None:
+        pa.load_all_artifacts()
 
 # ─── Sidebar ──────────────────────────────────────────────────────────────────
 st.sidebar.title("BOI Fraud Intelligence")
@@ -296,6 +298,7 @@ st.sidebar.markdown('<div class="mode-banner">v1.0 · Hybrid ML + Anomaly Engine
 
 # ─── Data Loaders ─────────────────────────────────────────────────────────────
 def get_queue_data():
+    base_df = None
     cards_path = os.path.join(PHASE6_DIR, "investigation_cards.json")
     beh_lookup = {}
     accounts = {}
@@ -312,17 +315,11 @@ def get_queue_data():
     if not STATIC_MODE:
         queue_path = os.path.join(PHASE7_DIR, "investigation_queue.csv")
         if os.path.exists(queue_path):
-            df = pd.read_csv(queue_path)
-            if "behavior_score" not in df.columns:
-                df["behavior_score"] = df["account_id"].map(beh_lookup).fillna(0.0)
-            if "rank" not in df.columns:
-                df = df.sort_values(by="priority_score", ascending=False).reset_index(drop=True)
-                df.index += 1
-                df.index.name = "rank"
-                df = df.reset_index()
-            return df
+            base_df = pd.read_csv(queue_path)
+            if "behavior_score" not in base_df.columns:
+                base_df["behavior_score"] = base_df["account_id"].map(beh_lookup).fillna(0.0)
 
-    if beh_lookup:
+    if base_df is None and beh_lookup:
         try:
             records = []
             for acct_id, acct_data in accounts.items():
@@ -333,20 +330,43 @@ def get_queue_data():
                     "risk_band": acct_data.get("risk_band"),
                     "priority_score": round(0.8 * acct_data.get("risk_score") + 0.2 * acct_data.get("behavior_score"), 2)
                 })
-            df = pd.DataFrame(records)
-            if not df.empty:
-                df = df.sort_values(by="priority_score", ascending=False).reset_index(drop=True)
-                df.index += 1
-                df.index.name = "rank"
-                df = df.reset_index()
-                return df
-        except Exception as e:
-            st.error(f"Error loading data: {e}")
+            base_df = pd.DataFrame(records)
+        except Exception:
+            pass
+
+    # Merge session state batch predictions if present
+    batch_list = st.session_state.get("batch_predictions_list", [])
+    if batch_list:
+        df_batch = pd.DataFrame(batch_list)
+        if base_df is not None and not base_df.empty:
+            base_df = base_df[~base_df["account_id"].isin(df_batch["account_id"])]
+            base_df = pd.concat([df_batch, base_df], ignore_index=True)
+        else:
+            base_df = df_batch
+
+    if base_df is not None and not base_df.empty:
+        if "priority_score" not in base_df.columns:
+            base_df["priority_score"] = round(0.8 * base_df["risk_score"] + 0.2 * base_df.get("behavior_score", 0.0), 2)
+        base_df = base_df.sort_values(by="priority_score", ascending=False).reset_index(drop=True)
+        if "rank" in base_df.columns:
+            base_df = base_df.drop(columns=["rank"])
+        base_df.index += 1
+        base_df.index.name = "rank"
+        base_df = base_df.reset_index()
+        return base_df
+
     return None
 
 queue_df = get_queue_data()
 
 def get_account_profile(account_id):
+    # Check session state first
+    batch_dict = st.session_state.get("batch_predictions_dict", {})
+    if account_id in batch_dict:
+        res = batch_dict[account_id]
+        raw_row = st.session_state.get("batch_raw_rows", {}).get(account_id)
+        return res, raw_row
+
     if not STATIC_MODE and pa is not None:
         try:
             df_raw_all = pd.read_csv(os.path.join(DATA_PHASE1, "dataset.csv"))
@@ -449,15 +469,59 @@ def gauge_fig(score, title, bar_color):
     )
     return fig
 
+def mock_predict_account(account_df):
+    acct_id = account_df.iloc[0]["account_id"]
+    hash_val = sum(ord(c) for c in acct_id)
+    ml_probability = (hash_val % 100) / 100.0
+    ml_score = ml_probability * 100
+    stat_score = (hash_val * 7 % 100)
+    behavior_score = (hash_val * 13 % 100)
+    
+    risk_score = 0.70 * ml_score + 0.10 * stat_score + 0.20 * behavior_score
+    risk_score_rounded = round(risk_score, 2)
+    
+    if risk_score_rounded <= 30.0:
+        risk_band = "Normal"
+    elif risk_score_rounded <= 60.0:
+        risk_band = "Monitor"
+    elif risk_score_rounded <= 80.0:
+        risk_band = "High Risk"
+    else:
+        risk_band = "Critical"
+        
+    action = {"Normal": "No action", "Monitor": "Enhanced monitoring", 
+              "High Risk": "Manual fraud investigation", "Critical": "Immediate review"}[risk_band]
+              
+    response = {
+        "account_id": acct_id,
+        "predicted_class": int(ml_probability >= 0.40),
+        "ml_probability": round(ml_probability, 6),
+        "risk_score": risk_score_rounded,
+        "prediction": risk_band,
+        "risk_band": risk_band,
+        "recommended_action": action,
+        "top_features": ["F2737", "F2678", "F3836", "account_age_days"],
+        "top_positive_contributors": [
+            {"feature": "F2737", "label": "Transaction Velocity (F2737)", "feature_value": 1.25, "shap_value": 0.35},
+            {"feature": "account_age_days", "label": "Account Age (Days)", "feature_value": 3200, "shap_value": 0.15}
+        ],
+        "top_negative_contributors": [
+            {"feature": "F2678", "label": "Debit Frequency (F2678)", "feature_value": 0.1, "shap_value": -0.22}
+        ],
+        "report": f"MOCK REPORT FOR {acct_id}: The account has a risk score of {risk_score_rounded} placing it in the {risk_band} band. Main drivers include high transaction velocity (F2737) and account maturity."
+    }
+    return response
+
 # ─── Page Header ──────────────────────────────────────────────────────────────
 st.markdown("## Bank of India — Fraud Intelligence")
 st.markdown('<p style="color:#9fa3a8; font-size:0.82rem; margin-top:-0.4rem;">Money Mule Detection · Hybrid ML & Anomaly Detection · Analyst Workspace</p>', unsafe_allow_html=True)
 st.markdown('<hr style="border-top:1px solid #e9e9e7; margin:0.75rem 0 1rem;">', unsafe_allow_html=True)
 
-tab1, tab2, tab3, tab4 = st.tabs([
+tab1, tab2, tab3, tab4, tab5 = st.tabs([
     "Investigation Queue",
     "Forensic Profiler",
     "Sandbox Tester",
+    "Batch Upload",
     "Model Metrics"
 ])
 
@@ -638,7 +702,10 @@ with tab3:
         for col in ["Unnamed: 0", "F3924"]:
             if col in demo_row.columns:
                 demo_row = demo_row.drop(columns=[col])
-        demo_row.insert(0, "account_id", f"SANDBOX_{selected_idx:03d}")
+        if "account_id" in demo_row.columns:
+            demo_row["account_id"] = f"SANDBOX_{selected_idx:03d}"
+        else:
+            demo_row.insert(0, "account_id", f"SANDBOX_{selected_idx:03d}")
 
         st.markdown('<div class="section-label" style="margin-top:0.8rem;">Raw Attributes (partial)</div>', unsafe_allow_html=True)
         st.dataframe(demo_row[["account_id","F3886","F3891","F3890","F3893","F2737","F2678","F3836"]].head(1),
@@ -716,14 +783,184 @@ with tab3:
             st.info("Demo reports not found. Run the Phase 7 pipeline to generate them.")
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# TAB 4 — MODEL METRICS
+# TAB 4 — BATCH UPLOAD
 # ═══════════════════════════════════════════════════════════════════════════════
 with tab4:
+    st.markdown("### Batch Spreadsheet Ingestion")
+    st.markdown('<p style="color:#9fa3a8; font-size:0.82rem; margin-bottom:0.8rem;">Upload a spreadsheet of accounts in Excel (.xlsx) or CSV (.csv) format to run multi-layered fraud risk scoring and classify accounts into risk bands.</p>', unsafe_allow_html=True)
+    
+    uploaded_file = st.file_uploader("Upload spreadsheet file", type=["csv", "xlsx"])
+    
+    if uploaded_file is not None:
+        try:
+            if uploaded_file.name.endswith('.csv'):
+                df_uploaded = pd.read_csv(uploaded_file)
+            else:
+                df_uploaded = pd.read_excel(uploaded_file)
+                
+            st.success(f"Successfully loaded file: `{uploaded_file.name}` ({len(df_uploaded)} records, {len(df_uploaded.columns)} columns)")
+            
+            # Show snippet
+            st.markdown('<div class="section-label">Spreadsheet Preview</div>', unsafe_allow_html=True)
+            st.dataframe(df_uploaded, use_container_width=True)
+            
+            # Button to trigger scoring
+            if st.button("Run Batch Scoring"):
+                # Determine expected columns from dataset
+                try:
+                    raw_dataset_path = os.path.join(DATA_PHASE1, "dataset.csv")
+                    df_example = pd.read_csv(raw_dataset_path, nrows=5)
+                    if "Unnamed: 0" in df_example.columns:
+                        df_example = df_example.drop(columns=["Unnamed: 0"])
+                    if "F3924" in df_example.columns:
+                        df_example = df_example.drop(columns=["F3924"])
+                    expected_cols = list(df_example.columns)
+                except Exception:
+                    # Fallback to demo features
+                    expected_cols = []
+                
+                # Check for ID column
+                if "account_id" not in df_uploaded.columns:
+                    st.warning("Column 'account_id' not found in uploaded file. Assigning auto-generated account IDs.")
+                    df_uploaded.insert(0, "account_id", [f"UPLOAD_{i:04d}" for i in range(len(df_uploaded))])
+                
+                # Filter schema validation
+                valid_df = df_uploaded.copy()
+                if not STATIC_MODE and expected_cols:
+                    with st.spinner("Validating columns..."):
+                        valid_df, invalid_df = pa.validate_schema(df_uploaded, expected_cols)
+                        if not invalid_df.empty:
+                            st.warning(f"Found {len(invalid_df)} rows failing schema validation. Scoring the remaining {len(valid_df)} valid rows.")
+                
+                if valid_df.empty:
+                    st.error("No valid records found in the uploaded file matching the expected column schema.")
+                else:
+                    predictions_list = []
+                    progress_bar = st.progress(0)
+                    status_text = st.empty()
+                    
+                    total_rows = len(valid_df)
+                    
+                    # Store variables for profiler
+                    batch_predictions_dict = {}
+                    batch_raw_rows = {}
+                    batch_predictions_list = []
+                    
+                    for i, (idx, row) in enumerate(valid_df.iterrows()):
+                        row_df = pd.DataFrame([row])
+                        acct_id = str(row["account_id"])
+                        
+                        status_text.text(f"Scoring {acct_id} ({i+1}/{total_rows})...")
+                        progress_bar.progress((i + 1) / total_rows)
+                        
+                        if STATIC_MODE:
+                            res = mock_predict_account(row_df)
+                        else:
+                            res = pa.predict_account(row_df, api_key=os.getenv("GEMINI_API_KEY"))
+                            
+                        predictions_list.append(res)
+                        batch_predictions_dict[acct_id] = res
+                        clean_row = row_df.copy()
+                        if "Unnamed: 0" in clean_row.columns:
+                            clean_row = clean_row.drop(columns=["Unnamed: 0"])
+                        if "F3924" in clean_row.columns:
+                            clean_row = clean_row.drop(columns=["F3924"])
+                        batch_raw_rows[acct_id] = clean_row
+                        
+                        batch_predictions_list.append({
+                            "account_id": acct_id,
+                            "risk_score": res["risk_score"],
+                            "behavior_score": res.get("behavior_score", 0.0) if not STATIC_MODE else (sum(ord(c) for c in acct_id) * 13 % 100),
+                            "risk_band": res["risk_band"],
+                            "priority_score": round(0.8 * res["risk_score"] + 0.2 * res.get("behavior_score", 0.0), 2)
+                        })
+                        
+                    status_text.text("Scoring complete!")
+                    st.success(f"Batch scoring completed successfully for {total_rows} accounts!")
+                    
+                    # Store in session state
+                    st.session_state["batch_predictions"] = predictions_list
+                    st.session_state["batch_predictions_list"] = batch_predictions_list
+                    st.session_state["batch_predictions_dict"] = batch_predictions_dict
+                    st.session_state["batch_raw_rows"] = batch_raw_rows
+                    
+                    st.rerun()
+                    
+        except Exception as e:
+            st.error(f"Error reading file: {e}")
+            
+    # Display batch results if present in session state
+    if "batch_predictions" in st.session_state:
+        batch_preds = st.session_state["batch_predictions"]
+        df_results = pd.DataFrame([{
+            "Account ID": r["account_id"],
+            "ML Prob (%)": round(r["ml_probability"] * 100, 2),
+            "Fused Risk Score": r["risk_score"],
+            "Risk Band": r["risk_band"],
+            "Recommended Action": r["recommended_action"]
+        } for r in batch_preds])
+        
+        st.markdown("---")
+        st.markdown("#### Scored Batch Summary")
+        
+        # Metric cards
+        crit_cnt  = len(df_results[df_results["Risk Band"] == "Critical"])
+        hr_cnt    = len(df_results[df_results["Risk Band"] == "High Risk"])
+        mon_cnt   = len(df_results[df_results["Risk Band"] == "Monitor"])
+        norm_cnt  = len(df_results[df_results["Risk Band"] == "Normal"])
+        
+        c1, c2, c3, c4, c5 = st.columns(5)
+        def stat_card_batch(container, value, label, color):
+            container.markdown(f"""
+<div class="stat-card">
+  <div class="stat-value" style="color:{color};">{value}</div>
+  <div class="stat-label">{label}</div>
+</div>""", unsafe_allow_html=True)
+            
+        stat_card_batch(c1, len(df_results), "Total",      "#37352f")
+        stat_card_batch(c2, crit_cnt,        "Critical",   "#dc2626")
+        stat_card_batch(c3, hr_cnt,          "High Risk",  "#b45309")
+        stat_card_batch(c4, mon_cnt,         "Monitor",    "#4338ca")
+        stat_card_batch(c5, norm_cnt,        "Normal",     "#15803d")
+        
+        st.markdown("<div style='height:1rem'></div>", unsafe_allow_html=True)
+        
+        # Display results table
+        st.markdown('<div class="section-label">Batch Scoring Results</div>', unsafe_allow_html=True)
+        st.dataframe(df_results, use_container_width=True, hide_index=True)
+        
+        # Export option
+        csv_data = df_results.to_csv(index=False).encode('utf-8')
+        st.download_button(
+            label="Download Scored Results as CSV",
+            data=csv_data,
+            file_name="batch_scored_predictions.csv",
+            mime="text/csv"
+        )
+        
+        st.markdown("""
+> [!TIP]
+> All accounts scored in this batch have been automatically integrated into the main **Investigation Queue** and **Forensic Profiler** dropdown list. 
+> Switch to the **Forensic Profiler** tab and select any account from the list to view its interactive SHAP risk attributions and GenAI compliance briefs!
+""")
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# TAB 5 — MODEL METRICS
+# ═══════════════════════════════════════════════════════════════════════════════
+with tab5:
     st.markdown("### Model Calibration & Metrics")
 
     comparison_path = os.path.join(PHASE3_DIR, "model_comparison.csv")
     if os.path.exists(comparison_path):
         comparison_df = pd.read_csv(comparison_path)
+        rename_map = {
+            "CV Precision": "Precision",
+            "CV Recall": "Recall",
+            "CV F1": "F1-Score",
+            "CV ROC-AUC": "ROC-AUC",
+            "CV PR-AUC": "PR-AUC"
+        }
+        comparison_df = comparison_df.rename(columns=rename_map)
     else:
         comparison_df = pd.DataFrame([
             {"Model": "XGBoost (Tuned)",       "Precision": 0.9548, "Recall": 0.7538, "F1-Score": 0.8324, "ROC-AUC": 0.9759, "PR-AUC": 0.8650},
